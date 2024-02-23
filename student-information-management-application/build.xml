@@ -1,0 +1,17 @@
+<project name="student-information-management-application">
+    <property name="classes.dir" value="build/classes"/>
+    <property name="src.dir" value="src/main/java"/>
+    <property name="doc.dir" value="build/doc"/>
+    <property name="version" value="document"/>
+
+    <target name="generate-javadoc">
+        <javadoc packagenames="com.student.information.management.add.*" sourcepath="${src.dir}" destdir="${doc.dir}" version="${version}" windowtitle="Test ANT Documentation">
+            <fileset dir="."></fileset>
+            <doctitle><![CDATA[= Test Documentation =]]></doctitle>
+            <bottom>
+                <![CDATA[Copyright © ${copyright.year}. All Rights Reserved.]]>
+            </bottom>
+        </javadoc>
+        <echo message="java doc has been generated!" />
+    </target>
+</project>
