@@ -41,7 +41,13 @@ public class Main {
             return;
         }
         System.out.print("Enter Middle Name: ");
-        newStudent.setMiddleName(sc.nextLine());
+        String middleName = sc.nextLine();
+        if (isValidMiddleName(middleName)) {
+            newStudent.setMiddleName(middleName);
+        } else {
+            System.out.println("Invalid First Name. Please try again.");
+            return;
+        }
         System.out.print("Enter Sex (Male/Female): ");
         String sex = sc.nextLine();
         if (isValidSex(sex)) {

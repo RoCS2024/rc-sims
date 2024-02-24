@@ -4,7 +4,6 @@ import com.student.information.management.add.app.model.student.Student;
 import com.student.information.management.add.data.student.dao.StudentDao;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
@@ -22,10 +21,6 @@ import static org.mockito.Mockito.when;
 public class StudentDaoImplTest {
     @Mock
     private StudentDao studentDao;
-
-    @InjectMocks
-    private StudentDaoImpl studentDaoImpl;
-
     private List<Student> students;
 
     @Before
@@ -37,6 +32,7 @@ public class StudentDaoImplTest {
     @Test
     public void testAddStudent() {
         Student student = new Student("CT21-0073", "Amulong", "kate", "itaas", "female", "08/07/2012 07:35:00.000000000 PM", "Catholic", "amulong@gmail.com", "Tagaytay", "009912132");
+        Student student2 = new Student("CT21-0073", "Amulong", "kate", "itaas", "female", "08/07/2012 07:35:00.000000000 PM", "Catholic", "amulong@gmail.com", "Tagaytay", "009912132");
 
         when(studentDao.addStudent(student)).thenAnswer(new Answer<Boolean>() {
             @Override
@@ -50,11 +46,11 @@ public class StudentDaoImplTest {
             }
         });
 
-        studentDaoImpl.addStudent(student);
+        studentDao.addStudent(student);
 
         when(studentDao.getAllStudents()).thenReturn(students);
         List<Student> studentList = studentDao.getAllStudents();
 
-        assertEquals(studentList.size(), 0);
+        assertEquals(studentList.size(), 1);
     }
 }

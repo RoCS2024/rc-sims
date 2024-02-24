@@ -115,10 +115,16 @@ public class Student {
         return !lastName.isEmpty() && lastName.matches("[a-zA-Z ]+");
     }
     /**
-     * Validation for middleName it should be a string only.
+     * Validation for firstName it should be a string only.
      */
     public static boolean isValidFirstName(String firstName) {
-        return !firstName.isEmpty() && firstName.matches("[a-zA-Z ]+");
+        return !firstName.isEmpty() && firstName.matches("[A-a-zZ ]+");
+    }
+    /**
+     * Validation for middleName it should be a string only.
+     */
+    public static boolean isValidMiddleName(String middleName) {
+        return !middleName.isEmpty() && middleName.matches("[A-a-zZ ]+");
     }
     /**
      * Validation for sex it should be a male or female only.
