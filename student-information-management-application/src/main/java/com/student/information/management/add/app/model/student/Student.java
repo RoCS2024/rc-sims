@@ -1,5 +1,7 @@
 package com.student.information.management.add.app.model.student;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -100,11 +102,20 @@ public class Student {
     /**
      * Validation for student id should be have a pattern like CT00-0000.
      */
+    private static List<String> existingStudentIds = new ArrayList<>();
+
     public static boolean isValidStudentId(String studentId) {
         String pattern = "CT\\d{2}-\\d{4}";
         if (studentId.matches(pattern)) {
-            return true;
+            if (existingStudentIds.contains(studentId)) {
+                System.out.println("Student ID " + studentId + " already exists.");
+                return false;
+            } else {
+                existingStudentIds.add(studentId);
+                return true;
+            }
         } else {
+            System.out.println("Invalid student ID format.");
             return false;
         }
     }
@@ -174,6 +185,12 @@ public class Student {
         Pattern pattern = Pattern.compile(emailRegex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+    /**
+     * Validation for address it should not be null.
+     */
+    public static boolean isValidAddress(String address) {
+        return address != null && !address.isEmpty();
     }
     /**
      * Validation for contact number it should be a number only.

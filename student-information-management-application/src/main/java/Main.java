@@ -20,7 +20,6 @@ public class Main {
         String studentId = sc.nextLine();
         if (isValidStudentId(studentId)) {
             newStudent.setStudentId(studentId);
-            System.out.println("Student ID set successfully.");
         } else {
             System.out.println("Invalid Student ID. Please try again.");
         }
@@ -52,7 +51,6 @@ public class Main {
         String sex = sc.nextLine();
         if (isValidSex(sex)) {
             newStudent.setSex(sex);
-            System.out.println("Sex set successfully.");
         } else {
             System.out.println("Invalid sex. Please enter 'Male' or 'Female'.");
             return;
@@ -70,7 +68,6 @@ public class Main {
         String religion = sc.nextLine();
         if (isValidReligion(sex)) {
             newStudent.setReligion(religion);
-            System.out.println("Religion set successfully.");
         } else {
             System.out.println("Invalid Religion. Please enter Religion.");
             return;
@@ -79,18 +76,21 @@ public class Main {
         String email = sc.nextLine();
         if (isValidEmail(email)) {
             newStudent.setEmail(email);
-            System.out.println("Email set successfully.");
         } else {
             System.out.println("Invalid email format. Please enter a valid email.");
             return;
         }
         System.out.print("Enter Address: ");
-        newStudent.setAddress(sc.nextLine());
+        String address = sc.nextLine();
+        if (isValidAddress(address)) {
+            newStudent.setAddress(address);
+        } else {
+            System.out.println("Address should not be null.");
+        }
         System.out.print("Enter Contact Number: ");
         String contactNumber = sc.nextLine();
         if (isValidContactNumber(contactNumber)) {
             newStudent.setContactNumber(contactNumber);
-            System.out.println("Contact Number set successfully.");
         } else {
             System.out.println("Invalid contact number format. Please enter a valid contact number.");
             return;
