@@ -2,8 +2,8 @@ package com.student.information.management.add.data.student.dao.impl;
 
 import com.student.information.management.add.app.model.student.Student;
 import com.student.information.management.add.data.student.dao.StudentDao;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
@@ -12,27 +12,51 @@ import org.mockito.stubbing.Answer;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-/**
- * This is the Student Dao Impl Test.
- */
-public class StudentDaoImplTest {
+class StudentDaoImplTest {
+
     @Mock
     private StudentDao studentDao;
     private List<Student> students;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         students = new ArrayList<>();
     }
 
     @Test
+    public void testGetAllStudents() {
+        StudentDao studentDao = mock(StudentDao.class);
+
+        Student student = new Student();
+        List<Student> students = new ArrayList<>();
+        students.add(student);
+
+        when(studentDao.getAllStudents()).thenReturn(students);
+        List<Student> studentList = studentDao.getAllStudents();
+        assertEquals(studentList.size(), 1);
+    }
+
+    @Test
+    public void testGetStudentById() {
+        StudentDao studentDao = mock(StudentDao.class);
+
+        Student student1 = new Student();
+
+        List<Student> students = new ArrayList<>();
+        students.add(student1);
+
+        when(studentDao.getStudentById("CT21-0073")).thenReturn(student1);
+        assertEquals(students.size(), 1);
+    }
+
+    @Test
     public void testAddStudent() {
-        Student student = new Student("CT21-0073", "Amulong", "kate", "itaas", "female", "08/07/2012 07:35:00.000000000 PM", "Catholic", "amulong@gmail.com", "Tagaytay", "009912132");
-        Student student2 = new Student("CT21-0073", "Amulong", "kate", "itaas", "female", "08/07/2012 07:35:00.000000000 PM", "Catholic", "amulong@gmail.com", "Tagaytay", "009912132");
+        Student student = new Student();
 
         when(studentDao.addStudent(student)).thenAnswer(new Answer<Boolean>() {
             @Override

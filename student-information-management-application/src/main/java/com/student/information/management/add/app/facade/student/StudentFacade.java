@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface StudentFacade {
     List<Student> getAllStudents();
-    Student getStudentById(String student_id) throws RuntimeException;
+    Student getStudentById(String student_id);
     boolean addStudent(Student student);
 }

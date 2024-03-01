@@ -24,9 +24,6 @@ public class Student {
 
     }
 
-    public Student(String studentId, String lastName, String firstName, String middleName, String sex, String birthday, String religion, String email, String address, String contactNumber) {
-    }
-
     public String getStudentId() {
         return studentId;
     }

@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.student.information.management.add.app.model.student.Student.isValidStudentId;
 import static com.student.information.management.add.data.utils.QueryConstant.*;
 /**
  * This is the Student Dao Impl.
@@ -34,7 +33,7 @@ public class StudentDaoImpl implements StudentDao {
         }
     }
     @Override
-    public Student getStudentById(String id) throws RuntimeException {
+    public Student getStudentById(String id){
         try {
             PreparedStatement stmt = con.prepareStatement(GET_STUDENT_BY_STUDENT_ID_STATEMENT);
             stmt.setString(1, id);
@@ -44,8 +43,8 @@ public class StudentDaoImpl implements StudentDao {
                 return setStudent(rs);
             }
 
-        } catch (Exception ignored) {
-
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
         return null;
     }
@@ -67,8 +66,9 @@ public class StudentDaoImpl implements StudentDao {
             int result = statement.executeUpdate();
             return result == 1? true: false;
 
-        } catch (Exception e) {}
-        return false;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -90,9 +90,8 @@ public class StudentDaoImpl implements StudentDao {
             student.setAddress(rs.getString("address"));
             student.setContactNumber(rs.getString("contact_number"));
             return student;
-        }catch(Exception ignored){
-
+        }catch(Exception e){
+            throw new RuntimeException(e);
         }
-        return null;
     }
 }

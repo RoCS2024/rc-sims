@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface StudentDao {
     List<Student> getAllStudents();
-    Student getStudentById(String student_id) throws RuntimeException;
+    Student getStudentById(String id);
     boolean addStudent(Student student);
     Student addStudents(ResultSet rs);
 }
