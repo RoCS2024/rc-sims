@@ -20,7 +20,6 @@ public class StudentDaoImpl implements StudentDao {
     public List<Student> getAllStudents() {
         try {
             PreparedStatement stmt = con.prepareStatement(GET_ALL_STUDENTS_STATEMENT);
-            PreparedStatement statement = con.prepareStatement("select * from student ");
             ResultSet rs = stmt.executeQuery();
             List<Student> students = new ArrayList<>();
 
@@ -41,9 +40,6 @@ public class StudentDaoImpl implements StudentDao {
             PreparedStatement stmt = con.prepareStatement(GET_STUDENT_BY_STUDENT_ID_STATEMENT);
             stmt.setString(1, id);
             ResultSet rs = stmt.executeQuery();
-            try (PreparedStatement statement = con.prepareStatement("select * from student id")) {
-                rs = statement.executeQuery();
-            }
             if(rs.next()) {
                 return setStudent(rs);
             }
