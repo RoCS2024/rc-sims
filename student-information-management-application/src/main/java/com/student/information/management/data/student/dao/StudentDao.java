@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface StudentDao {
     List<Student> getAllStudents();
+    List<Student> testGetStudentById();
     Student getStudentById(String id);
     boolean addStudent(Student student);
     Student addStudents(ResultSet rs);
