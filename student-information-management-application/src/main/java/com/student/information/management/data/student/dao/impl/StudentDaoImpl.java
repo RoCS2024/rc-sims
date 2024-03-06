@@ -7,6 +7,7 @@ import com.student.information.management.data.student.dao.StudentDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,17 +27,19 @@ public class StudentDaoImpl implements StudentDao {
                 students.add(setStudent(rs));
             }
             return students;
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public Student getStudentById(String id){
+        List<Student> students = new ArrayList<>();
         try {
             PreparedStatement stmt = con.prepareStatement(GET_STUDENT_BY_STUDENT_ID_STATEMENT);
             stmt.setString(1, id);
             ResultSet rs = stmt.executeQuery();
-
             if(rs.next()) {
                 return setStudent(rs);
             }
@@ -116,4 +119,5 @@ public class StudentDaoImpl implements StudentDao {
         }
         return true;
     }
+
 }

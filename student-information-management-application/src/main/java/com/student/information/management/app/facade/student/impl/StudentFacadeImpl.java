@@ -12,6 +12,7 @@ public class StudentFacadeImpl implements StudentFacade {
 
     @Override
     public List<Student> getAllStudents() { return studentDao.getAllStudents(); }
+
     @Override
     public Student getStudentById(String student_id) throws RuntimeException {
         return studentDao.getStudentById(student_id);
@@ -45,4 +46,7 @@ public class StudentFacadeImpl implements StudentFacade {
         }
         return result;
     }
+
+
+
 }
