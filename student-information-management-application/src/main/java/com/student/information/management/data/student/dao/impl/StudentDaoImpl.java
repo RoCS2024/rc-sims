@@ -92,4 +92,28 @@ public class StudentDaoImpl implements StudentDao {
             throw new RuntimeException(e);
         }
     }
+
+    public boolean updateStudent(Student student)  {
+        try  {
+            Connection connection;
+            connection = new ConnectionHelper().getConnection();
+            PreparedStatement statement = connection.prepareStatement(UPDATE_STATEMENT);
+            statement.setString(1, student.getLastName());
+            statement.setString(2, student.getFirstName());
+            statement.setString(3, student.getMiddleName());
+            statement.setString(4, student.getSex());
+            statement.setString(5, student.getBirthday());
+            statement.setString(5, student.getReligion());
+            statement.setString(6, student.getEmail());
+            statement.setString(7, student.getAddress());
+            statement.setString(8, student.getContactNumber());
+            statement.setString(9, student.getStudentId());
+            int result = statement.executeUpdate();
+
+            return result == 1? true: false;
+        } catch (Exception e) {
+
+        }
+        return true;
+    }
 }

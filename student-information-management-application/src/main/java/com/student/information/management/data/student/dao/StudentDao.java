@@ -10,4 +10,5 @@ public interface StudentDao {
     Student getStudentById(String id);
     boolean addStudent(Student student);
     Student addStudents(ResultSet rs);
-}
+
+    boolean updateStudent(Student student) ;}
