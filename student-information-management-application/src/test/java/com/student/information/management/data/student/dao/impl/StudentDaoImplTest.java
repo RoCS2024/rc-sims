@@ -76,5 +76,22 @@ class StudentDaoImplTest {
 
         assertEquals(studentList.size(), 1);
     }
+    private static final String TEST_STUDENT_ID = "CT21-1111";
+
+    @Test
+    void testUpdateStudent() {
+
+        Student testStudent = new Student();
+        testStudent.setStudentId(TEST_STUDENT_ID);
+        testStudent.setLastName("Digo");
+
+
+        boolean result = studentDao.updateStudent(testStudent);
+        assertTrue(result);
+
+        Student updatedStudent = studentDao.getStudentById(TEST_STUDENT_ID);
+        assertEquals("Digo", updatedStudent.getLastName());
+
+    }
 
 }

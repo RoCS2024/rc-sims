@@ -8,4 +8,6 @@ public interface StudentFacade {
     List<Student> getAllStudents();
     Student getStudentById(String student_id);
     boolean addStudent(Student student);
+
+    boolean updateStudent(Student student);
 }

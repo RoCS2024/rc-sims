@@ -30,4 +30,19 @@ public class StudentFacadeImpl implements StudentFacade {
         }
         return result;
     }
+
+    @Override
+    public boolean updateStudent(Student student) {
+        boolean result = false;
+        try {
+            Student targetStudent = getStudentById(student.getStudentId());
+            if (targetStudent == null) {
+                throw new Exception("Student to update not found. ");
+            }
+            result = studentDao.updateStudent(student);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        return result;
+    }
 }
