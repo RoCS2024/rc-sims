@@ -36,6 +36,17 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public List<Student> testGetStudentById() {
+        List<Student> students = new ArrayList<>();
+        try {
+            Connection con = ConnectionHelper.getConnection();
+            ResultSet rs;
+            try (PreparedStatement statement = con.prepareStatement("select * from student id")) {
+                rs = statement.executeQuery();
+            }
+            return getStudents(students, rs);
+        } catch(Exception e){
+
+        }
         return null;
     }
 
