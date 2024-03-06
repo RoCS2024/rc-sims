@@ -13,14 +13,6 @@ public class StudentFacadeImpl implements StudentFacade {
     @Override
     public List<Student> getAllStudents() { return studentDao.getAllStudents(); }
 
-
-
-    @Override
-    public List<Student> getAllStudentById(String studentId) {
-        return (List<Student>) studentDao.getStudentById(studentId);
-    }
-
-
     @Override
     public Student getStudentById(String student_id) throws RuntimeException {
         return studentDao.getStudentById(student_id);

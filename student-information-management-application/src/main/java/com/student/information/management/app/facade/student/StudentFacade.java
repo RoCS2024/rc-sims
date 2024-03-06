@@ -7,8 +7,6 @@ import java.util.List;
 public interface StudentFacade {
     List<Student> getAllStudents();
 
-    List<Student> getAllStudentById(String studentId);
-
     Student getStudentById(String studentId);
     boolean addStudent(Student student);
 

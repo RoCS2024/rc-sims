@@ -35,22 +35,6 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public List<Student> testGetStudentById() {
-        List<Student> students = new ArrayList<>();
-        try {
-            Connection con = ConnectionHelper.getConnection();
-            ResultSet rs;
-            try (PreparedStatement statement = con.prepareStatement("select * from student id")) {
-                rs = statement.executeQuery();
-            }
-            return getStudents(students, rs);
-        } catch(Exception e){
-
-        }
-        return null;
-    }
-
-    @Override
     public Student getStudentById(String id){
         List<Student> students = new ArrayList<>();
         try {
@@ -140,22 +124,4 @@ public class StudentDaoImpl implements StudentDao {
         return true;
     }
 
-    private List<Student> getStudents(List<Student> students, ResultSet rs) throws SQLException {
-        while (rs.next()) {
-            Student student = new Student();
-            student.setStudentId(rs.getString("student_id"));
-            student.setLastName(rs.getString("last_name"));
-            student.setFirstName(rs.getString("first_name"));
-            student.setMiddleName(rs.getString("middle_name"));
-            student.setSex(rs.getString("sex"));
-            student.setBirthday(rs.getString("birthday"));
-            student.setReligion(rs.getString("religion"));
-            student.setEmail(rs.getString("email"));
-            student.setAddress(rs.getString("address"));
-            student.setContactNumber(rs.getString("contact_number"));
-            students.add(student);
-
-        }
-        return students;
-    }
 }
