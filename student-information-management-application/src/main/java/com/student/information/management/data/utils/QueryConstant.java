@@ -1,5 +1,8 @@
 package com.student.information.management.data.utils;
 
+/**
+ * This is the query constant.
+ */
 public class QueryConstant {
     private QueryConstant() {
     }

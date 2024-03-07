@@ -7,15 +7,18 @@ import com.student.information.management.data.student.dao.StudentDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.student.information.management.data.utils.QueryConstant.*;
-
+/**
+ * This is the Student Dao Impl.
+ */
 public class StudentDaoImpl implements StudentDao {
     Connection con = ConnectionHelper.getConnection();
-
+    /**
+     * This is the get all students.
+     */
     @Override
     public List<Student> getAllStudents() {
         try {
@@ -32,7 +35,9 @@ public class StudentDaoImpl implements StudentDao {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * This is get student by id.
+     */
     @Override
     public Student getStudentById(String id){
         List<Student> students = new ArrayList<>();
@@ -49,7 +54,9 @@ public class StudentDaoImpl implements StudentDao {
         }
         return null;
     }
-
+    /**
+     * This is for adding student.
+     */
     @Override
     public boolean addStudent(Student student) {
         try {
@@ -73,10 +80,12 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public Student addStudents(ResultSet rs) {
-        return null;
+    public List<Student> addStudents(ResultSet rs) {
+        return addStudents(rs);
     }
-
+    /**
+     * This is for set student.
+     */
     public Student setStudent(ResultSet rs) {
         try{
             Student student = new Student();
@@ -95,7 +104,9 @@ public class StudentDaoImpl implements StudentDao {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * This is update student.
+     */
     public boolean updateStudent(Student student)  {
         try  {
             Connection connection;
