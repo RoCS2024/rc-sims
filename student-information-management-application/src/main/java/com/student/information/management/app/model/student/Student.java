@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * This is student model.
+ */
 public class Student {
+    /**
+     * This is fields.
+     */
     private String studentId;
     private String lastName;
     private String firstName;
@@ -20,7 +25,9 @@ public class Student {
     public Student(){
 
     }
-
+    /**
+     * This is the Getter and Setter.
+     */
     public String getStudentId() {
         return studentId;
     }

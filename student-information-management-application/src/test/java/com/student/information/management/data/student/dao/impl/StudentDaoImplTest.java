@@ -15,7 +15,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
+/**
+ * This is to test the student dao impl.
+ */
 class StudentDaoImplTest {
     @Mock
     private StudentDao studentDao;
@@ -26,7 +28,9 @@ class StudentDaoImplTest {
         MockitoAnnotations.openMocks(this);
         students = new ArrayList<>();
     }
-
+    /**
+     * This is to test get all students.
+     */
     @Test
     public void testGetAllStudents() {
         StudentDao studentDao = mock(StudentDao.class);
@@ -39,7 +43,9 @@ class StudentDaoImplTest {
         List<Student> studentList = studentDao.getAllStudents();
         assertEquals(studentList.size(), 1);
     }
-
+    /**
+     * This is to test get student by id.
+     */
     @Test
     public void testGetStudentById() {
         StudentDao studentDao = mock(StudentDao.class);
@@ -52,7 +58,9 @@ class StudentDaoImplTest {
         when(studentDao.getStudentById("CT21-0073")).thenReturn(student1);
         assertEquals(students.size(), 1);
     }
-
+    /**
+     * This is to test add student.
+     */
     @Test
     public void testAddStudent() {
         Student student = new Student();
@@ -77,10 +85,11 @@ class StudentDaoImplTest {
         assertEquals(studentList.size(), 1);
     }
     private static final String TEST_STUDENT_ID = "CT21-1111";
-
+    /**
+     * This is to test Update Student.
+     */
     @Test
     void testUpdateStudent() {
-
         Student testStudent = new Student();
         testStudent.setStudentId(TEST_STUDENT_ID);
         testStudent.setLastName("Digo");
@@ -91,7 +100,5 @@ class StudentDaoImplTest {
 
         Student updatedStudent = studentDao.getStudentById(TEST_STUDENT_ID);
         assertEquals("Digo", updatedStudent.getLastName());
-
     }
-
 }
