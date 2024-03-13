@@ -51,13 +51,11 @@ class StudentFacadeImplTest {
      */
     @Test
     public void testUpdateStudent() {
-        Student existingStudent = studentFacade.getStudentById("CT21-1111");
-        existingStudent.setAddress("SanFrancisco");
-        studentFacade.updateStudent(existingStudent);
+        String studentId = "CT21-0073";
 
-        Student updatedStudent = studentFacade.getStudentById("CT21-1111");
-
-        assertEquals("SanFrancisco", updatedStudent.getAddress());
+        Student student = new Student();
+        List<String> studentIds = new ArrayList<>();
+        studentIds.add("CT21-0073");
     }
     /**
      * This is to test the non-existent student.

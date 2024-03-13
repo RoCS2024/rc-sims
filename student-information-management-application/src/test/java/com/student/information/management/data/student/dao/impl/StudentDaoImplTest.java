@@ -84,21 +84,25 @@ class StudentDaoImplTest {
 
         assertEquals(studentList.size(), 1);
     }
-    private static final String TEST_STUDENT_ID = "CT21-1111";
     /**
      * This is to test Update Student.
      */
-    @Test
-    void testUpdateStudent() {
-        Student testStudent = new Student();
-        testStudent.setStudentId(TEST_STUDENT_ID);
-        testStudent.setLastName("Digo");
 
+
+    @Test
+    void testUpdateStudentById() {
+        Student testStudent = new Student();
+        testStudent.setStudentId("CT21-0073");
+        testStudent.setLastName("Amulong");
 
         boolean result = studentDao.updateStudent(testStudent);
-        assertTrue(result);
 
-        Student updatedStudent = studentDao.getStudentById(TEST_STUDENT_ID);
-        assertEquals("Digo", updatedStudent.getLastName());
+        assertTrue(result, "Update should be successful");
+
+        Student updatedStudent = studentDao.getStudentById(testStudent.getStudentId());
+
+        assertNotNull(updatedStudent, "Updated student should not be null");
+
+        assertEquals(testStudent.getLastName(), updatedStudent.getLastName(), "Student's last name should be updated");
     }
 }

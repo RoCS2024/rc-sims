@@ -21,6 +21,7 @@ public class Student {
     private String email;
     private String address;
     private String contactNumber;
+    private String name;
 
     public Student(){
 
@@ -201,5 +202,13 @@ public class Student {
         Pattern pattern = Pattern.compile(contactNumberRegex);
         Matcher matcher = pattern.matcher(contactNumber);
         return matcher.matches();
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }
