@@ -201,7 +201,7 @@ public class Main {
         uStudents.setLastName(sc.nextLine());
         System.out.println("Update firstname");
         uStudents.setFirstName(sc.nextLine());
-        System.out.println("Update middlename");
+        System.out.println("Update middle name");
         uStudents.setMiddleName(sc.nextLine());
         System.out.println("Update sex");
         uStudents.setSex(sc.nextLine());
@@ -213,7 +213,7 @@ public class Main {
         uStudents.setEmail(sc.nextLine());
         System.out.println("Update address");
         uStudents.setAddress(sc.nextLine());
-        System.out.println("Update contactnumber");
+        System.out.println("Update contact number");
         uStudents.setContactNumber(sc.nextLine());
 
         try{
@@ -222,6 +222,6 @@ public class Main {
             System.out.println("Error Updating" + e.getMessage());
             return;
         }
-        System.out.println("successfull");
+        System.out.println("Successful");
     }
 }

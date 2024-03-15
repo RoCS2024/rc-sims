@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Update student project/update-student-application/src/main/main.iml" filepath="$PROJECT_DIR$/Update student project/update-student-application/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/student-information-management-application/src/main/main1.iml" filepath="$PROJECT_DIR$/student-information-management-application/src/main/main1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/integrated-student-information-application/src/main/main2.iml" filepath="$PROJECT_DIR$/integrated-student-information-application/src/main/main2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/student-view-application/src/main/main3.iml" filepath="$PROJECT_DIR$/student-view-application/src/main/main3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/student-information-management.iml" filepath="$PROJECT_DIR$/.idea/student-information-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/student-view-application/src/student-view-application.iml" filepath="$PROJECT_DIR$/student-view-application/src/student-view-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/integrated-student-information-application/src/test/test.iml" filepath="$PROJECT_DIR$/integrated-student-information-application/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/student-information-management-application/src/test/test1.iml" filepath="$PROJECT_DIR$/student-information-management-application/src/test/test1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Update student project/update-student-application/src/test/test2.iml" filepath="$PROJECT_DIR$/Update student project/update-student-application/src/test/test2.iml" />
+    </modules>
+  </component>
+</project>
