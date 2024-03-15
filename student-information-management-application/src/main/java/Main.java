@@ -39,6 +39,11 @@ public class Main {
         }
         System.out.print("Enter Last Name: ");
         String lastName = sc.nextLine();
+
+        /**
+         * Input Validation for Student's Last Name.
+         */
+
         if (isValidLastName(lastName)) {
             newStudent.setLastName(lastName);
         } else {
@@ -47,6 +52,11 @@ public class Main {
         }
         System.out.print("Enter First Name: ");
         String firstName = sc.nextLine();
+
+        /**
+         * Input Validation for Student's First Name.
+         */
+
         if (isValidFirstName(firstName)) {
             newStudent.setFirstName(firstName);
         } else {
@@ -55,6 +65,11 @@ public class Main {
         }
         System.out.print("Enter Middle Name: ");
         String middleName = sc.nextLine();
+
+        /**
+         * Input Validation for Student's Middle Name.
+         */
+
         if (isValidMiddleName(middleName)) {
             newStudent.setMiddleName(middleName);
         } else {
@@ -72,6 +87,10 @@ public class Main {
         System.out.print("Enter Birthday (MM/DD/YYYY): ");
         String birthday = sc.nextLine();
 
+        /**
+         * Input Validation for Date of Birth.
+         */
+
         while (!isValidBirthday(birthday)) {
             System.out.println("Invalid birthday format. Please use MM/DD/YYYY.");
             System.out.print("Enter Birthday (MM/DD/YYYY): ");
@@ -88,6 +107,11 @@ public class Main {
         }
         System.out.print("Enter Email: ");
         String email = sc.nextLine();
+
+        /**
+         * Input Validation for Email.
+         */
+
         if (isValidEmail(email)) {
             newStudent.setEmail(email);
         } else {
