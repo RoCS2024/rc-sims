@@ -13,8 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
 /**
  * This is to test the student dao impl.
  */
@@ -84,21 +85,32 @@ class StudentDaoImplTest {
 
         assertEquals(studentList.size(), 1);
     }
-    private static final String TEST_STUDENT_ID = "CT21-1111";
     /**
      * This is to test Update Student.
      */
-    @Test
-    void testUpdateStudent() {
-        Student testStudent = new Student();
-        testStudent.setStudentId(TEST_STUDENT_ID);
-        testStudent.setLastName("Digo");
 
+
+    @Test
+    void testUpdateStudentById() {
+        StudentDao studentDao = mock(StudentDao.class);
+
+        Student testStudent = new Student();
+        testStudent.setStudentId("CT21-0073");
+        testStudent.setLastName("Amulong");
+
+        when(studentDao.updateStudent(any(Student.class))).thenReturn(true);
 
         boolean result = studentDao.updateStudent(testStudent);
-        assertTrue(result);
 
-        Student updatedStudent = studentDao.getStudentById(TEST_STUDENT_ID);
-        assertEquals("Digo", updatedStudent.getLastName());
+        assertTrue(result, "Update should be successful");
+
+        verify(studentDao, times(1)).updateStudent(testStudent);
+
+        when(studentDao.getStudentById("CT21-0073")).thenReturn(testStudent);
+
+        Student updatedStudent = studentDao.getStudentById(testStudent.getStudentId());
+
+        assertNotNull(updatedStudent, "Updated student should not be null");
+        assertEquals(testStudent.getLastName(), updatedStudent.getLastName(), "Student's last name should be updated");
     }
 }

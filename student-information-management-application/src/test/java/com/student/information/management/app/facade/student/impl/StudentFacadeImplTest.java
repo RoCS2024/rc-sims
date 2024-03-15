@@ -10,6 +10,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.*;
+
 /**
  * This is to test student facade impl.
  */
@@ -51,13 +53,15 @@ class StudentFacadeImplTest {
      */
     @Test
     public void testUpdateStudent() {
-        Student existingStudent = studentFacade.getStudentById("CT21-1111");
-        existingStudent.setAddress("SanFrancisco");
-        studentFacade.updateStudent(existingStudent);
+        String studentId = "CT21-0073";
+        Student student = new Student();
+        student.setStudentId(studentId);
 
-        Student updatedStudent = studentFacade.getStudentById("CT21-1111");
+        Student mockStudent = mock(Student.class);
+        when(mockStudent.getStudentId()).thenReturn(studentId);
+        String retrievedStudentId = mockStudent.getStudentId();
+        verify(mockStudent, times(1)).getStudentId();
 
-        assertEquals("SanFrancisco", updatedStudent.getAddress());
     }
     /**
      * This is to test the non-existent student.

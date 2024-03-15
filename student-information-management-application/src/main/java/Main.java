@@ -26,7 +26,7 @@ public class Main {
         /**
          * This is for need to input information of the student for adding student.
          */
-        
+
         System.out.println("Adding an Student...");
         Student newStudent = new Student();
         System.out.print("Enter Student ID: ");

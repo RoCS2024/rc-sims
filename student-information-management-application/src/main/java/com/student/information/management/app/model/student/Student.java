@@ -22,9 +22,10 @@ public class Student {
     private String address;
     private String contactNumber;
 
-    public Student(){
+    public Student() {
 
     }
+
     /**
      * This is the Getter and Setter.
      */
@@ -35,12 +36,15 @@ public class Student {
     public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
+
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {this.lastName = lastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -64,6 +68,7 @@ public class Student {
     public void setSex(String sex) {
         this.sex = sex;
     }
+
     public String getBirthday() {
         return birthday;
     }
@@ -71,6 +76,7 @@ public class Student {
     public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
+
     public String getReligion() {
         return religion;
     }
@@ -78,6 +84,7 @@ public class Student {
     public void setReligion(String religion) {
         this.religion = religion;
     }
+
     public String getEmail() {
         return email;
     }
@@ -85,6 +92,7 @@ public class Student {
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getAddress() {
         return address;
     }
@@ -92,6 +100,7 @@ public class Student {
     public void setAddress(String address) {
         this.address = address;
     }
+
     public String getContactNumber() {
         return contactNumber;
     }
@@ -120,30 +129,35 @@ public class Student {
             return false;
         }
     }
+
     /**
      * Validation for lastName it should be a string only.
      */
     public static boolean isValidLastName(String lastName) {
         return !lastName.isEmpty() && lastName.matches("[a-zA-Z ]+");
     }
+
     /**
      * Validation for firstName it should be a string only.
      */
     public static boolean isValidFirstName(String firstName) {
         return !firstName.isEmpty() && firstName.matches("[A-a-zZ ]+");
     }
+
     /**
      * Validation for middleName it should be a string only.
      */
     public static boolean isValidMiddleName(String middleName) {
         return !middleName.isEmpty() && middleName.matches("[A-a-zZ ]+");
     }
+
     /**
      * Validation for sex it should be a male or female only.
      */
     public static boolean isValidSex(String sex) {
         return sex.equalsIgnoreCase("Male") || sex.equalsIgnoreCase("Female");
     }
+
     /**
      * Validation for Birthday it should have this pattern MM/DD/YYYY.
      */
@@ -172,12 +186,14 @@ public class Student {
 
         return true;
     }
+
     /**
      * Validation for religion it should be a string only.
      */
     public static boolean isValidReligion(String religion) {
         return !religion.isEmpty() && religion.matches("[a-zA-Z ]+");
     }
+
     /**
      * Validation for email it should have a @ and . input.
      */
@@ -187,12 +203,14 @@ public class Student {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
     /**
      * Validation for address it should not be null.
      */
     public static boolean isValidAddress(String address) {
         return address != null && !address.isEmpty();
     }
+
     /**
      * Validation for contact number it should be a number only.
      */
