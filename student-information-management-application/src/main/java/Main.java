@@ -15,26 +15,26 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         /**
-         * This is for need to input information of the student for viewing student.
+         * This is for displaying students with their information.
          */
-        System.out.println("Showing all student...");
+        System.out.println("Showing all students...");
         List<Student> studentList;
         studentList = studentFacade.getAllStudents();
         for(Student student: studentList) {
-            System.out.println("student id: " + student.getStudentId() + " | " + student.getLastName() + " | " + student.getFirstName() + " | " + student.getMiddleName() + " | " + student.getSex() + " | " + student.getBirthday() + " | " + student.getReligion() + " | " + student.getEmail() + " | " + student.getAddress() + " | " + student.getContactNumber());
+            System.out.println("Student ID: " + student.getStudentId() + " | " + student.getLastName() + " | " + student.getFirstName() + " | " + student.getMiddleName() + " | " + student.getSex() + " | " + student.getBirthday() + " | " + student.getReligion() + " | " + student.getEmail() + " | " + student.getAddress() + " | " + student.getContactNumber());
         }
-        /**
-         * This is for need to input information of the student for adding student.
-         */
 
-        System.out.println("Adding an Student...");
+        /**
+         * This is for inputting information to add a student.
+         */
+        System.out.println("Adding a student...");
         Student newStudent = new Student();
         System.out.print("Enter Student ID: ");
         String studentId = sc.nextLine();
         if (isValidStudentId(studentId)) {
             newStudent.setStudentId(studentId);
         }else {
-            System.out.println("Invalid Student Id. Please try again.");
+            System.out.println("Invalid Student ID. Please try again.");
             return;
         }
         System.out.print("Enter Last Name: ");
@@ -43,7 +43,6 @@ public class Main {
         /**
          * Input Validation for Student's Last Name.
          */
-
         if (isValidLastName(lastName)) {
             newStudent.setLastName(lastName);
         } else {
@@ -56,7 +55,6 @@ public class Main {
         /**
          * Input Validation for Student's First Name.
          */
-
         if (isValidFirstName(firstName)) {
             newStudent.setFirstName(firstName);
         } else {
@@ -69,7 +67,6 @@ public class Main {
         /**
          * Input Validation for Student's Middle Name.
          */
-
         if (isValidMiddleName(middleName)) {
             newStudent.setMiddleName(middleName);
         } else {
@@ -81,7 +78,7 @@ public class Main {
         if (isValidSex(sex)) {
             newStudent.setSex(sex);
         } else {
-            System.out.println("Invalid sex. Please enter 'Male' or 'Female'.");
+            System.out.println("Invalid sex. Please enter \"Male\" or \"Female\".");
             return;
         }
         System.out.print("Enter Birthday (MM/DD/YYYY): ");
@@ -90,7 +87,6 @@ public class Main {
         /**
          * Input Validation for Date of Birth.
          */
-
         while (!isValidBirthday(birthday)) {
             System.out.println("Invalid birthday format. Please use MM/DD/YYYY.");
             System.out.print("Enter Birthday (MM/DD/YYYY): ");
@@ -99,10 +95,14 @@ public class Main {
         newStudent.setBirthday(birthday);
         System.out.print("Enter Religion: ");
         String religion = sc.nextLine();
+
+        /**
+         * Input Validation for Religion.
+         */
         if (isValidReligion(sex)) {
             newStudent.setReligion(religion);
         } else {
-            System.out.println("Invalid Religion. Please enter Religion.");
+            System.out.println("Invalid religion. Please enter a valid religion.");
             return;
         }
         System.out.print("Enter Email: ");
@@ -111,7 +111,6 @@ public class Main {
         /**
          * Input Validation for Email.
          */
-
         if (isValidEmail(email)) {
             newStudent.setEmail(email);
         } else {
@@ -136,7 +135,7 @@ public class Main {
         try {
             studentFacade.addStudent(newStudent);
         } catch (Exception e) {
-            System.out.println("Error in adding student. " + e.getMessage());
+            System.out.println("Error in adding student." + e.getMessage());
             return;
         }
         System.out.println("Student successfully added.");
@@ -152,7 +151,7 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    UpdateStudentbyId();
+                    UpdateStudentById();
                     break;
                 case 2:
                     System.out.println("Exiting...");
@@ -170,11 +169,11 @@ public class Main {
         System.out.println("2. Exit");
         System.out.print("Choose an option: ");
     }
-    public static void UpdateStudentbyId(){
+    public static void UpdateStudentById(){
         Scanner sc = new Scanner(System.in);
         StudentFacade studentFacade = new StudentFacadeImpl();
-        System.out.println("searching Id");
-        System.out.print("Enter search id: ");
+        System.out.println("Searching ID");
+        System.out.print("Enter search ID: ");
         String students = sc.nextLine();
         Student uStudents = studentFacade.getStudentById(students);
         uStudents.setStudentId(students);
@@ -197,31 +196,85 @@ public class Main {
         }
 
         System.out.println("Updating");
-        System.out.println("Update lastname");
-        uStudents.setLastName(sc.nextLine());
-        System.out.println("Update firstname");
-        uStudents.setFirstName(sc.nextLine());
-        System.out.println("Update middle name");
-        uStudents.setMiddleName(sc.nextLine());
-        System.out.println("Update sex");
-        uStudents.setSex(sc.nextLine());
-        System.out.println("Update birthday");
-        uStudents.setBirthday(sc.nextLine());
-        System.out.println("Update religion");
-        uStudents.setReligion(sc.nextLine());
-        System.out.println("Update email");
-        uStudents.setEmail(sc.nextLine());
-        System.out.println("Update address");
-        uStudents.setAddress(sc.nextLine());
-        System.out.println("Update contact number");
-        uStudents.setContactNumber(sc.nextLine());
 
-        try{
-            studentFacade.updateStudent(uStudents);
-        } catch (Exception e){
-            System.out.println("Error Updating" + e.getMessage());
+        System.out.println("Update Last Name");
+        String lastName = sc.nextLine();
+        if (!isValidLastName(lastName)) {
+            System.out.println("Invalid last name format.");
             return;
         }
-        System.out.println("Successful");
+        uStudents.setLastName(lastName);
+
+        // Update firstname
+        System.out.println("Update First Name");
+        String firstName = sc.nextLine();
+        if (!isValidFirstName(firstName)) {
+            System.out.println("Invalid first name format.");
+            return;
+        }
+        uStudents.setFirstName(firstName);
+
+        System.out.println("Update Middle Name");
+        String middleName = sc.nextLine();
+        if (!isValidMiddleName(middleName)) {
+            System.out.println("Invalid middle name format.");
+            return;
+        }
+        uStudents.setMiddleName(middleName);
+
+        System.out.println("Update Sex");
+        String sex = sc.nextLine();
+        if (!isValidSex(sex)) {
+            System.out.println("Invalid sex format.");
+            return;
+        }
+        uStudents.setSex(sex);
+
+        System.out.println("Update Birthday (MM/DD/YYYY)");
+        String birthday = sc.nextLine();
+        if (!isValidBirthday(birthday)) {
+            System.out.println("Invalid birthday format.");
+            return;
+        }
+        uStudents.setBirthday(birthday);
+
+        System.out.println("Update Religion");
+        String religion = sc.nextLine();
+        if (!isValidReligion(religion)) {
+            System.out.println("Invalid religion format.");
+            return;
+        }
+        uStudents.setReligion(religion);
+
+        System.out.println("Update Email");
+        String email = sc.nextLine();
+        if (!isValidEmail(email)) {
+            System.out.println("Invalid email format.");
+            return;
+        }
+        uStudents.setEmail(email);
+
+        System.out.println("Update Address");
+        String address = sc.nextLine();
+        if (!isValidAddress(address)) {
+            System.out.println("Invalid address format.");
+            return;
+        }
+        uStudents.setAddress(address);
+
+        System.out.println("Update Contact Number");
+        String contactNumber = sc.nextLine();
+        if (!isValidContactNumber(contactNumber)) {
+            System.out.println("Invalid contact number format.");
+            return;
+        }
+        uStudents.setContactNumber(contactNumber);
+
+        try {
+            studentFacade.updateStudent(uStudents);
+            System.out.println("Update Successful.");
+        } catch (Exception e) {
+            System.out.println("Error updating: " + e.getMessage());
+        }
     }
 }
