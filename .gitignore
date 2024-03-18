@@ -1,9 +1,10 @@
 ### IntelliJ IDEA ###
 out/
-idea/
+.idea/
 build/
 doc/
 target/
+lib/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
