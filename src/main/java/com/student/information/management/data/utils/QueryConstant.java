@@ -12,6 +12,6 @@ public class QueryConstant {
     public static final String ADD_STUDENT_STATEMENT = "INSERT INTO STUDENT VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     public static final String UPDATE_STATEMENT ="UPDATE student" +
-            " SET last_name = ?, first_name = ?,  middle_name = ?, sex = ?, religion = ?, email = ?, address = ?, contact_number = ?"
+            " SET last_name = ?, first_name = ?,  middle_name = ?, sex = ?, birthday = ?, religion = ?, email = ?, address = ?, contact_number = ?"
             + "  WHERE student_id = ?";
 }

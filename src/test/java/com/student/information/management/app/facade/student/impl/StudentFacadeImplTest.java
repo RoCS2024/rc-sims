@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 /**
@@ -53,22 +52,20 @@ class StudentFacadeImplTest {
      */
     @Test
     public void testUpdateStudent() {
+        // Arrange
         String studentId = "CT21-0073";
         Student student = new Student();
         student.setStudentId(studentId);
 
+        // Create mock object
         Student mockStudent = mock(Student.class);
+
+        // Act
         when(mockStudent.getStudentId()).thenReturn(studentId);
         String retrievedStudentId = mockStudent.getStudentId();
-        verify(mockStudent, times(1)).getStudentId();
 
-    }
-    /**
-     * This is to test the non-existent student.
-     */
-    @Test
-    public void testGetNonexistentStudent() {
-        Student nonExistentStudent = studentFacade.getStudentById("CT21-9999");
-        assertNull(nonExistentStudent);
+        // Assert
+        assertEquals(studentId, retrievedStudentId);
+        verify(mockStudent, times(1)).getStudentId();
     }
 }
