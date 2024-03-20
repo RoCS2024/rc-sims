@@ -75,6 +75,11 @@ public class StudentDaoImpl implements StudentDao {
             throw new RuntimeException(e);
         }
     }
+    /**
+     * Creates a new Student from the ResultSet obtained from the query.
+     * @param rs the ResultSet from the query.
+     * @return the student was added.
+     * */
     @Override
     public List<Student> addStudents(ResultSet rs) {
         return addStudents(rs);

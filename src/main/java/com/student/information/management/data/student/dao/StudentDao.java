@@ -12,10 +12,35 @@ import java.util.List;
  * This modular approach facilitates the independent management and testing of system components.
  * */
 public interface StudentDao {
+    /**
+     * Retrieves all Students from the database
+     * @return
+     */
     List<Student> getAllStudents();
+
+    /**
+     * Student from the database with specified id.
+     * @param id the id of the student
+     * @return the student
+     */
     Student getStudentById(String id);
+
+    /**
+     * Adds students from database.
+     * @param student to add
+     * @return true if adding student is successful.
+     */
     boolean addStudent(Student student);
+    /**
+     * Adds students from database.
+     * @return true if adding student is successful.
+     */
     List<Student> addStudents(ResultSet rs);
+    /**
+     * Update students from database.
+     * @param student to add
+     * @return true if  you update adding student is successful.
+     */
     boolean updateStudent(Student student) ;
 
 }
