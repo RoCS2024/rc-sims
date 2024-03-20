@@ -13,8 +13,13 @@ import java.util.List;
 
 import static com.student.information.management.data.utils.QueryConstant.*;
 /**
- * This is the Student Dao Impl.
- */
+ *The DAOImpl class contains details about data access logic, such as SQL queries, database connections, and transaction management.
+ *This separation of concerns enhances code maintainability and readability
+ *by separating database-related code from the rest of the application logic.
+ *By implementing the DAO interface, DAOImpl classes follow a modular design principle
+ *in which each class is responsible for a specific set of data operations.
+ *This abstraction simplifies the application's overall architecture, making it easier to understand and manage.
+ **/
 public class StudentDaoImpl implements StudentDao {
     Connection con = ConnectionHelper.getConnection();
     @Override

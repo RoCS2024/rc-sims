@@ -5,8 +5,12 @@ import com.student.information.management.app.model.student.Student;
 import java.sql.ResultSet;
 import java.util.List;
 /**
- * This is student dao interface.
- */
+ * Interface for Student Data Access Object or what we called DAO. The DAO separates business logic from database access code.
+ * This separation improves codebase maintainability by
+ * ensuring that changes to the database schema or technology have no direct impact on the business logic.
+ * DAO encourages modular design by providing a simple interface for accessing data.
+ * This modular approach facilitates the independent management and testing of system components.
+ * */
 public interface StudentDao {
     List<Student> getAllStudents();
     Student getStudentById(String id);
