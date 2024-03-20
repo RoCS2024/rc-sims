@@ -2,8 +2,14 @@ package com.student.information.management.data.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-/**
- * This is the Connection for Database.
+
+ /**
+ * The ConnectionHelper class connects to an Oracle database. The task of maintaining database connections is taken away by a connection helper.
+ * It makes it simpler for developers to concentrate on the main features of the application
+ * by sum up the logic for establishing, opening, closing, and connecting database connections.
+ * Features for securely managing database can be found in connection helpers.
+ * To lower the chance to exposed you're information being exposed in the application code they can
+ * securely make a private data like usernames and passwords.
  */
 public class ConnectionHelper {
     public static final String URL = "jdbc:oracle:thin:@localhost:1521:baemonville";
