@@ -7,6 +7,7 @@ import com.student.information.management.data.student.dao.StudentDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,6 @@ import static com.student.information.management.data.utils.QueryConstant.*;
  */
 public class StudentDaoImpl implements StudentDao {
     Connection con = ConnectionHelper.getConnection();
-    /**
-     * This is the get all students.
-     */
     @Override
     public List<Student> getAllStudents() {
         try {
@@ -35,9 +33,6 @@ public class StudentDaoImpl implements StudentDao {
             throw new RuntimeException(e);
         }
     }
-    /**
-     * This is get student by id.
-     */
     @Override
     public Student getStudentById(String id){
         List<Student> students = new ArrayList<>();
@@ -54,9 +49,6 @@ public class StudentDaoImpl implements StudentDao {
         }
         return null;
     }
-    /**
-     * This is for adding student.
-     */
     @Override
     public boolean addStudent(Student student) {
         try {
@@ -66,7 +58,7 @@ public class StudentDaoImpl implements StudentDao {
             statement.setString(3, student.getFirstName());
             statement.setString(4, student.getMiddleName());
             statement.setString(5, student.getSex());
-            statement.setString(6, student.getBirthday());
+            statement.setTimestamp(6, student.getBirthday());
             statement.setString(7, student.getReligion());
             statement.setString(8, student.getEmail());
             statement.setString(9, student.getAddress());
@@ -78,14 +70,10 @@ public class StudentDaoImpl implements StudentDao {
             throw new RuntimeException(e);
         }
     }
-
     @Override
     public List<Student> addStudents(ResultSet rs) {
         return addStudents(rs);
     }
-    /**
-     * This is for set student.
-     */
     public Student setStudent(ResultSet rs) {
         try{
             Student student = new Student();
@@ -94,7 +82,7 @@ public class StudentDaoImpl implements StudentDao {
             student.setFirstName(rs.getString("first_name"));
             student.setMiddleName(rs.getString("middle_name"));
             student.setSex(rs.getString("sex"));
-            student.setBirthday(rs.getString("birthday"));
+            student.setBirthday(Timestamp.valueOf(rs.getString("birthday")));
             student.setReligion(rs.getString("religion"));
             student.setEmail(rs.getString("email"));
             student.setAddress(rs.getString("address"));
@@ -104,30 +92,26 @@ public class StudentDaoImpl implements StudentDao {
             throw new RuntimeException(e);
         }
     }
-    /**
-     * This is update student.
-     */
-    public boolean updateStudent(Student student)  {
-        try  {
-            Connection connection;
-            connection = new ConnectionHelper().getConnection();
+    @Override
+    public boolean updateStudent(Student student) {
+        try {
+            Connection connection = ConnectionHelper.getConnection();
             PreparedStatement statement = connection.prepareStatement(UPDATE_STATEMENT);
             statement.setString(1, student.getLastName());
             statement.setString(2, student.getFirstName());
             statement.setString(3, student.getMiddleName());
             statement.setString(4, student.getSex());
-            statement.setString(5, student.getBirthday());
-            statement.setString(5, student.getReligion());
-            statement.setString(6, student.getEmail());
-            statement.setString(7, student.getAddress());
-            statement.setString(8, student.getContactNumber());
-            statement.setString(9, student.getStudentId());
+            statement.setTimestamp(5, student.getBirthday());
+            statement.setString(6, student.getReligion());
+            statement.setString(7, student.getEmail());
+            statement.setString(8, student.getAddress());
+            statement.setString(9, student.getContactNumber());
+            statement.setString(10, student.getStudentId());
             int result = statement.executeUpdate();
 
-            return result == 1? true: false;
+            return result == 1;
         } catch (Exception e) {
-
+            throw new RuntimeException(e);
         }
-        return true;
     }
 }

@@ -1,5 +1,6 @@
 package com.student.information.management.app.model.student;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -16,7 +17,7 @@ public class Student {
     private String firstName;
     private String middleName;
     private String sex;
-    private String birthday;
+    private Timestamp birthday;
     private String religion;
     private String email;
     private String address;
@@ -69,11 +70,11 @@ public class Student {
         this.sex = sex;
     }
 
-    public String getBirthday() {
+    public Timestamp getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Timestamp birthday) {
         this.birthday = birthday;
     }
 
@@ -161,31 +162,8 @@ public class Student {
     /**
      * Validation for Birthday it should have this pattern MM/DD/YYYY.
      */
-    public static boolean isValidBirthday(String birthday) {
-        String[] parts = birthday.split("/");
-        if (parts.length != 3)
-            return false;
 
-        int month, day, year;
-        try {
-            month = Integer.parseInt(parts[0]);
-            day = Integer.parseInt(parts[1]);
-            year = Integer.parseInt(parts[2]);
-        } catch (NumberFormatException e) {
-            return false;
-        }
 
-        if (month < 1 || month > 12)
-            return false;
-
-        if (day < 1 || day > 31)
-            return false;
-
-        if (year < 1950 || year > 2100)
-            return false;
-
-        return true;
-    }
 
     /**
      * Validation for religion it should be a string only.
