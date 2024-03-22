@@ -2,6 +2,11 @@ import com.student.information.management.app.facade.student.StudentFacade;
 import com.student.information.management.app.facade.student.impl.StudentFacadeImpl;
 import com.student.information.management.app.model.student.Student;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -98,11 +103,16 @@ public class Main {
 
         System.out.print("Enter Birthday (MM/DD/YYYY): ");
         String birthday = sc.nextLine();
-        if (!isValidBirthday(birthday)) {
-            System.out.println("Invalid birthday format. Please use MM/DD/YYYY.");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            Date parsedDate = dateFormat.parse(birthday);
+            Timestamp date = new Timestamp(parsedDate.getTime());
+            newStudent.setBirthday(date);
+        } catch (ParseException ex) {
+            System.out.println("Invalid date format. Please enter the date in MM/DD/YYYY format.");
             return;
         }
-        newStudent.setBirthday(birthday);
 
         System.out.print("Enter Religion: ");
         String religion = sc.nextLine();
@@ -188,11 +198,16 @@ public class Main {
 
         System.out.print("Enter Birthday (MM/DD/YYYY): ");
         String birthday = sc.nextLine();
-        if (!isValidBirthday(birthday)) {
-            System.out.println("Invalid birthday format. Please use MM/DD/YYYY.");
-            return;
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            Date parsedDate = dateFormat.parse(birthday);
+            Timestamp date = new Timestamp(parsedDate.getTime());
+            studentToUpdate.setBirthday(date);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        studentToUpdate.setBirthday(birthday);
+
 
         System.out.print("Enter Religion: ");
         String religion = sc.nextLine();

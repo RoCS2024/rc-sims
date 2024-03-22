@@ -3,6 +3,7 @@ out/
 .idea/
 build/
 doc/
+*.iml
 target/
 lib/
 !**/src/main/**/out/

@@ -1,5 +1,6 @@
 package com.student.information.management.app.model.student;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -16,7 +17,7 @@ public class Student {
     private String firstName;
     private String middleName;
     private String sex;
-    private String birthday;
+    private Timestamp birthday;
     private String religion;
     private String email;
     private String address;
@@ -69,11 +70,11 @@ public class Student {
         this.sex = sex;
     }
 
-    public String getBirthday() {
+    public Timestamp getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Timestamp birthday) {
         this.birthday = birthday;
     }
 
