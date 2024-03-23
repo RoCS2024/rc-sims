@@ -5,7 +5,7 @@ import com.student.information.management.app.model.student.Student;
 import java.sql.ResultSet;
 import java.util.List;
 /**
- *  The DAO separates business logic from database access code.
+ *  Student dao separates business logic from database access code.
  * */
 public interface StudentDao {
     List<Student> getAllStudents();

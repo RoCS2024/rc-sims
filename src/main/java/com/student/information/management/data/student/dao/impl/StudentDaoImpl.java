@@ -13,8 +13,8 @@ import java.util.List;
 
 import static com.student.information.management.data.utils.QueryConstant.*;
 /**
- *The DAOImpl class contains details about data access logic, and transaction management.
- *This separation of concerns enhances code maintainability and readability
+ *The Student DAOImpl class contains details about data access logic,
+ *  and transaction management.
  **/
 public class StudentDaoImpl implements StudentDao {
     Connection con = ConnectionHelper.getConnection();

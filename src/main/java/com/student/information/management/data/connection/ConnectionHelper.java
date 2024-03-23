@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 /**
  * The ConnectionHelper class connects to an Oracle database.
- * The task of maintaining database connections is taken away by a connection helper.
- *
  */
 public class ConnectionHelper {
     public static final String URL = "jdbc:oracle:thin:@localhost:1521:baemonville";

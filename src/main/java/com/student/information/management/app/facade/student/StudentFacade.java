@@ -4,7 +4,8 @@ import com.student.information.management.app.model.student.Student;
 
 import java.util.List;
 /**
- *Facades conceal the complexity of underlying subsystems, such as SQL database operations, from the rest of the application.
+ * Student Facades conceal the complexity of underlying subsystems
+ * from the rest of the application.
  **/
 public interface StudentFacade {
     List<Student> getAllStudents();

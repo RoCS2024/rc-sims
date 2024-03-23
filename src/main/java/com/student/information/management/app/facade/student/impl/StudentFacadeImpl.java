@@ -6,9 +6,7 @@ import com.student.information.management.data.student.dao.StudentDao;
 import com.student.information.management.data.student.dao.impl.StudentDaoImpl;
 
 import java.util.List;
-/**FacadeImpl covers the complexities of database.
- *This encapsulation keeps the rest of the application away from the
- *  complexities of database operations, making it easier to work with.
+/**Student FacadeImpl covers the complexities of database.
  **/
 public class StudentFacadeImpl implements StudentFacade {
     StudentDao studentDao = new StudentDaoImpl();
