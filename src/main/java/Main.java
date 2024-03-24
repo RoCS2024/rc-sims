@@ -1,6 +1,6 @@
-import com.student.information.management.app.facade.student.StudentFacade;
-import com.student.information.management.app.facade.student.impl.StudentFacadeImpl;
-import com.student.information.management.app.model.student.Student;
+import com.student.information.management.appl.facade.student.StudentFacade;
+import com.student.information.management.appl.facade.student.impl.StudentFacadeImpl;
+import com.student.information.management.appl.model.student.Student;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.student.information.management.app.model.student.Student.*;
+import static com.student.information.management.appl.model.student.Student.*;
 
 public class Main {
     public static void main(String[] args) {

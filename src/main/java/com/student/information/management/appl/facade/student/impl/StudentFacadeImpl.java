@@ -1,7 +1,7 @@
-package com.student.information.management.app.facade.student.impl;
+package com.student.information.management.appl.facade.student.impl;
 
-import com.student.information.management.app.facade.student.StudentFacade;
-import com.student.information.management.app.model.student.Student;
+import com.student.information.management.appl.facade.student.StudentFacade;
+import com.student.information.management.appl.model.student.Student;
 import com.student.information.management.data.student.dao.StudentDao;
 import com.student.information.management.data.student.dao.impl.StudentDaoImpl;
 

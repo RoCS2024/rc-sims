@@ -1,6 +1,6 @@
 package com.student.information.management.data.student.dao;
 
-import com.student.information.management.app.model.student.Student;
+import com.student.information.management.appl.model.student.Student;
 
 import java.sql.ResultSet;
 import java.util.List;
