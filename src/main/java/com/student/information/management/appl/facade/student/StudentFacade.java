@@ -1,6 +1,6 @@
-package com.student.information.management.app.facade.student;
+package com.student.information.management.appl.facade.student;
 
-import com.student.information.management.app.model.student.Student;
+import com.student.information.management.appl.model.student.Student;
 
 import java.util.List;
 /**

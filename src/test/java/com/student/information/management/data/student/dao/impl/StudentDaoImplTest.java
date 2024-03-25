@@ -1,6 +1,6 @@
 package com.student.information.management.data.student.dao.impl;
 
-import com.student.information.management.app.model.student.Student;
+import com.student.information.management.appl.model.student.Student;
 import com.student.information.management.data.student.dao.StudentDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
-import com.student.information.management.app.facade.student.StudentFacade;
-import com.student.information.management.app.facade.student.impl.StudentFacadeImpl;
-import com.student.information.management.app.model.student.Student;
+import com.student.information.management.appl.facade.student.StudentFacade;
+import com.student.information.management.appl.facade.student.impl.StudentFacadeImpl;
+import com.student.information.management.appl.model.student.Student;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static com.student.information.management.app.model.student.Student.*;
 
 public class Main {
     private static List<String> existingStudentIds = new ArrayList<>();
