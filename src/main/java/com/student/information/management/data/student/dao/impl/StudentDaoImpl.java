@@ -3,6 +3,8 @@ package com.student.information.management.data.student.dao.impl;
 import com.student.information.management.app.model.student.Student;
 import com.student.information.management.data.connection.ConnectionHelper;
 import com.student.information.management.data.student.dao.StudentDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.sql.Connection;
@@ -17,13 +19,16 @@ import static com.student.information.management.data.utils.QueryConstant.*;
  * This is the Student Dao Impl.
  */
 public class StudentDaoImpl implements StudentDao {
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(StudentDaoImpl.class);
     Connection con = ConnectionHelper.getConnection();
     @Override
     public List<Student> getAllStudents() {
+        List<Student> students = new ArrayList<>();
         try {
             PreparedStatement stmt = con.prepareStatement(GET_ALL_STUDENTS_STATEMENT);
             ResultSet rs = stmt.executeQuery();
-            List<Student> students = new ArrayList<>();
+
 
             while(rs.next()) {
                 students.add(setStudent(rs));
@@ -31,12 +36,13 @@ public class StudentDaoImpl implements StudentDao {
             return students;
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            LOGGER.error("An SQL Exception occurred." + e.getMessage());
         }
+        LOGGER.debug("Student database is empty.");
+        return students;
     }
     @Override
     public Student getStudentById(String id){
-        List<Student> students = new ArrayList<>();
         try {
             PreparedStatement stmt = con.prepareStatement(GET_STUDENT_BY_STUDENT_ID_STATEMENT);
             stmt.setString(1, id);
@@ -46,8 +52,10 @@ public class StudentDaoImpl implements StudentDao {
             }
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            LOGGER.error("Error retrieving Student with ID " + id + ": " + e.getMessage());
+            e.printStackTrace();
         }
+        LOGGER.debug("Student not found.");
         return null;
     }
     @Override
@@ -68,7 +76,9 @@ public class StudentDaoImpl implements StudentDao {
             return result == 1? true: false;
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            LOGGER.error("Error adding student failed " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
     @Override
@@ -90,8 +100,10 @@ public class StudentDaoImpl implements StudentDao {
             student.setContactNumber(rs.getString("contact_number"));
             return student;
         }catch(Exception e){
-            throw new RuntimeException(e);
+            LOGGER.error("An SQL Exception occurred." + e.getMessage());
         }
+        LOGGER.debug("set Student failed.");
+        return setStudent(rs);
     }
     @Override
     public boolean updateStudent(Student student) {
@@ -112,7 +124,9 @@ public class StudentDaoImpl implements StudentDao {
 
             return result == 1;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            LOGGER.error("Error updating user with ID " + student.getStudentId() + ": " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 }
