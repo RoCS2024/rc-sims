@@ -1,4 +1,4 @@
-package com.student.information.management.app.model.student;
+package com.student.information.management.appl.model.student;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
