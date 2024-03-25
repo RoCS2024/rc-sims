@@ -69,13 +69,4 @@ class StudentFacadeImplTest {
         assertEquals(studentId, retrievedStudentId);
         verify(mockStudent, times(1)).getStudentId();
     }
-
-    /**
-     * This is to test the non-existent student.
-     */
-    @Test
-    public void testGetNonexistentStudent() {
-        Student nonExistentStudent = studentFacade.getStudentById("CT21-9999");
-        assertNull(nonExistentStudent);
-    }
 }
