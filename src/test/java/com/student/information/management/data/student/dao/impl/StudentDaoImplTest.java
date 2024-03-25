@@ -37,21 +37,21 @@ class StudentDaoImplTest {
         List<Student> studentList = studentDao.getAllStudents();
         assertEquals(studentList.size(), 2);
     }
-//    /**
-//     * This is to test get student by id.
-//     */
-//    @Test
-//    public void testGetStudentById() {
-//        StudentDao studentDao = mock(StudentDao.class);
-//
-//        Student student1 = new Student();
-//
-//        List<Student> students = new ArrayList<>();
-//        students.add(student1);
-//
-//        when(studentDao.getStudentById("CT21-0073")).thenReturn(student1);
-//        assertEquals(students.size(), 1);
-//    }
+
+    /**
+     * This is to test get student by id.
+     */
+    @Test
+    public void testGetStudentById() {
+        Student student1 = new Student();
+        student1.setStudentId("CT21-0073");
+
+        List<Student> students = new ArrayList<>();
+        students.add(student1);
+
+        Student actualStudent = studentDao.getStudentById("CT21-0073");
+        assertEquals(actualStudent.getStudentId(), student1.getStudentId());
+    }
 //    /**
 //     * This is to test add student.
 //     */
