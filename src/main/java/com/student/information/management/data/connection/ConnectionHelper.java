@@ -7,7 +7,7 @@ import java.sql.DriverManager;
  */
 public class ConnectionHelper {
     /** The connection URL. */
-    public static final String URL = "jdbc:oracle:thin:@localhost:1521:rogate";
+    public static final String URL = "jdbc:oracle:thin:@localhost:1521:oracleDB";
     /** The Oracle driver. */
     public static final String ORACLE_DRIVER = "oracle.jdbc.driver.OracleDriver";
     /** The username used to connect to the database. */
