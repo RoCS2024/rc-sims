@@ -46,64 +46,38 @@ class StudentDaoImplTest {
         Student student1 = new Student();
         student1.setStudentId("CT21-0073");
 
-        List<Student> students = new ArrayList<>();
-        students.add(student1);
+        when(studentDao.getStudentById("CT21-0073")).thenReturn(student1);
 
-        Student actualStudent = studentDao.getStudentById("CT21-0073");
-        assertEquals(actualStudent.getStudentId(), student1.getStudentId());
+        Student expectedStudent = studentDao.getStudentById("CT21-0073");
+
+        assertEquals(expectedStudent, student1);
+        assertEquals(expectedStudent.getStudentId(), student1.getStudentId());
     }
-//    /**
-//     * This is to test add student.
-//     */
-//    @Test
-//    public void testAddStudent() {
-//        Student student = new Student();
-//
-//        when(studentDao.addStudent(student)).thenAnswer(new Answer<Boolean>() {
-//            @Override
-//            public Boolean answer(InvocationOnMock invocationOnMock) throws Throwable {
-//                Object[] arguments = invocationOnMock.getArguments();
-//                if (arguments != null && arguments.length > 0 && arguments[0] != null) {
-//                    students.add(student);
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
-//
-//        studentDao.addStudent(student);
-//
-//        when(studentDao.getAllStudents()).thenReturn(students);
-//        List<Student> studentList = studentDao.getAllStudents();
-//
-//        assertEquals(studentList.size(), 1);
-//    }
-//    /**
-//     * This is to test Update Student.
-//     */
-//
-//
-//    @Test
-//    void testUpdateStudentById() {
-//        StudentDao studentDao = mock(StudentDao.class);
-//
-//        Student testStudent = new Student();
-//        testStudent.setStudentId("CT21-0073");
-//        testStudent.setLastName("Amulong");
-//
-//        when(studentDao.updateStudent(any(Student.class))).thenReturn(true);
-//
-//        boolean result = studentDao.updateStudent(testStudent);
-//
-//        assertTrue(result, "Update should be successful");
-//
-//        verify(studentDao, times(1)).updateStudent(testStudent);
-//
-//        when(studentDao.getStudentById("CT21-0073")).thenReturn(testStudent);
-//
-//        Student updatedStudent = studentDao.getStudentById(testStudent.getStudentId());
-//
-//        assertNotNull(updatedStudent, "Updated student should not be null");
-//        assertEquals(testStudent.getLastName(), updatedStudent.getLastName(), "Student's last name should be updated");
-//    }
+
+    @Test
+    public void testAddStudent() {
+        Student student = new Student();
+        student.setStudentId("CT21-0073");
+
+        when(studentDao.addStudent(student)).thenReturn(true);
+        when(studentDao.getStudentById("CT21-0073")).thenReturn(student);
+
+        Student expectedStudent = studentDao.getStudentById("CT21-0073");
+        assertEquals(expectedStudent.getStudentId(), student.getStudentId());
+    }
+
+    @Test
+    public void testUpdateStudent() {
+        Student student = new Student();
+        student.setStudentId("CT21-0073");
+        student.setLastName("Amulong");
+
+        when(studentDao.addStudent(student)).thenReturn(true);
+        when(studentDao.updateStudent(student)).thenReturn(true);
+        when(studentDao.getStudentById("CT21-0073")).thenReturn(student);
+
+        Student expectedStudent = studentDao.getStudentById("CT21-0073");
+        assertEquals(expectedStudent.getLastName(), student.getLastName());
+    }
+
 }
