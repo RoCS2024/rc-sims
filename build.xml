@@ -68,16 +68,6 @@
         </junitlauncher>
     </target>
 
-    <!-- Run the application -->
-    <target name="run" depends="compile">
-        <java classname="com.circle.application.Main">
-            <classpath>
-                <path refid="runtime.path"/>
-                <pathelement location="${classes.dir}"/>
-            </classpath>
-        </java>
-    </target>
-
     <!-- Build   -->
     <target name="build" depends="test"/>
 
@@ -89,11 +79,11 @@
 
     <!-- Generate java documentation   -->
     <target name="generate-javadoc">
-        <javadoc packagenames="com.circle.application.*"
+        <javadoc packagenames="com.student.information.management.*"
                  sourcepath="${src.dir}"
                  destdir="${doc.dir}"
                  version="${version}"
-                 windowtitle="Circle Application Documentation">
+                 windowtitle="Student Information Management Application Documentation">
             <fileset dir="."></fileset>
             <doctitle><![CDATA[= Test Documentation =]]></doctitle>
             <bottom>
