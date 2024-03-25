@@ -7,7 +7,7 @@ import com.student.information.management.data.student.dao.impl.StudentDaoImpl;
 
 import java.util.List;
 /**
- * This is the Student Facade Impl this class implement the Student Facade interface for the functions easier to use.
+ * An implementation class of the Student Facade.
  */
 public class StudentFacadeImpl implements StudentFacade {
     StudentDao studentDao = new StudentDaoImpl();

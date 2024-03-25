@@ -14,8 +14,9 @@ import java.util.List;
 
 import static com.student.information.management.data.utils.QueryConstant.*;
 /**
- * This is the Student Dao Impl.
- */
+ * An implementation class of the Student Data Access Object.
+ *
+ * */
 public class StudentDaoImpl implements StudentDao {
     Connection con = ConnectionHelper.getConnection();
     @Override
