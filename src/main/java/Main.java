@@ -1,18 +1,20 @@
-import com.student.information.management.app.facade.student.StudentFacade;
-import com.student.information.management.app.facade.student.impl.StudentFacadeImpl;
-import com.student.information.management.app.model.student.Student;
+import com.student.information.management.appl.facade.student.StudentFacade;
+import com.student.information.management.appl.facade.student.impl.StudentFacadeImpl;
+import com.student.information.management.appl.model.student.Student;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
-import static com.student.information.management.app.model.student.Student.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
+    private static List<String> existingStudentIds = new ArrayList<>();
     public static void main(String[] args) {
         StudentFacade studentFacade = new StudentFacadeImpl();
         Scanner sc = new Scanner(System.in);
@@ -70,36 +72,39 @@ public class Main {
         newStudent.setStudentId(studentId);
 
         System.out.print("Enter Last Name: ");
-        String lastName = sc.nextLine();
-        if (!isValidLastName(lastName)) {
+        String lastName = sc.next();
+        if (!lastName.matches("[a-zA-zZ]+")) {
             System.out.println("Invalid Last Name. Please try again.");
             return;
         }
         newStudent.setLastName(lastName);
 
         System.out.print("Enter First Name: ");
-        String firstName = sc.nextLine();
-        if (!isValidFirstName(firstName)) {
+        String firstName = sc.next();
+        if (!firstName.matches("[a-zA-Z]+")) {
             System.out.println("Invalid First Name. Please try again.");
             return;
         }
         newStudent.setFirstName(firstName);
 
         System.out.print("Enter Middle Name: ");
-        String middleName = sc.nextLine();
-        if (!isValidMiddleName(middleName)) {
+        String middleName = sc.next();
+        if (!middleName.matches("[a-zA-Z]+")) {
             System.out.println("Invalid Middle Name. Please try again.");
             return;
         }
         newStudent.setMiddleName(middleName);
 
         System.out.print("Enter Sex (Male/Female): ");
+        sc.nextLine();
         String sex = sc.nextLine();
-        if (!isValidSex(sex)) {
+
+        if (!(sex.equalsIgnoreCase("Male") || sex.equalsIgnoreCase("Female"))) {
             System.out.println("Invalid sex. Please enter 'Male' or 'Female'.");
             return;
         }
         newStudent.setSex(sex);
+
 
         System.out.print("Enter Birthday (MM/DD/YYYY): ");
         String birthday = sc.nextLine();
@@ -116,7 +121,7 @@ public class Main {
 
         System.out.print("Enter Religion: ");
         String religion = sc.nextLine();
-        if (!isValidReligion(religion)) {
+        if (!religion.matches("[a-zA-Z]+")) {
             System.out.println("Invalid Religion. Please try again.");
             return;
         }
@@ -132,7 +137,7 @@ public class Main {
 
         System.out.print("Enter Address: ");
         String address = sc.nextLine();
-        if (!isValidAddress(address)) {
+        if (!(address != null && !address.isEmpty())) {
             System.out.println("Invalid address format. Please try again.");
             return;
         }
@@ -166,7 +171,7 @@ public class Main {
 
         System.out.print("Enter Last Name: ");
         String lastName = sc.nextLine();
-        if (!isValidLastName(lastName)) {
+        if (!lastName.matches("[a-zA-Z]+")) {
             System.out.println("Invalid Last Name. Please try again.");
             return;
         }
@@ -174,7 +179,7 @@ public class Main {
 
         System.out.print("Enter First Name: ");
         String firstName = sc.nextLine();
-        if (!isValidFirstName(firstName)) {
+        if (!firstName.matches("[a-zA-Z]+")) {
             System.out.println("Invalid First Name. Please try again.");
             return;
         }
@@ -182,7 +187,7 @@ public class Main {
 
         System.out.print("Enter Middle Name: ");
         String middleName = sc.nextLine();
-        if (!isValidMiddleName(middleName)) {
+        if (!middleName.matches("[a-zA-Z]+")) {
             System.out.println("Invalid Middle Name. Please try again.");
             return;
         }
@@ -190,7 +195,8 @@ public class Main {
 
         System.out.print("Enter Sex (Male/Female): ");
         String sex = sc.nextLine();
-        if (!isValidSex(sex)) {
+
+        if (!(sex.equalsIgnoreCase("Male") || sex.equalsIgnoreCase("Female"))) {
             System.out.println("Invalid sex. Please enter 'Male' or 'Female'.");
             return;
         }
@@ -211,7 +217,7 @@ public class Main {
 
         System.out.print("Enter Religion: ");
         String religion = sc.nextLine();
-        if (!isValidReligion(religion)) {
+        if (!religion.matches("[a-zA-Z]+")) {
             System.out.println("Invalid Religion. Please try again.");
             return;
         }
@@ -227,7 +233,7 @@ public class Main {
 
         System.out.print("Enter Address: ");
         String address = sc.nextLine();
-        if (!isValidAddress(address)) {
+        if (!(address != null && !address.isEmpty())) {
             System.out.println("Invalid address format. Please try again.");
             return;
         }
@@ -247,5 +253,75 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error in updating student: " + e.getMessage());
         }
+    }
+
+    /**
+     * Validation for student id should be have a pattern like CT00-0000.
+     */
+
+    public static boolean isValidStudentId(String studentId) {
+        String pattern = "CT\\d{2}-\\d{4}";
+        if (studentId.matches(pattern)) {
+            if (existingStudentIds.contains(studentId)) {
+                System.out.println("Student ID " + studentId + " already exists.");
+                return false;
+            } else {
+                existingStudentIds.add(studentId);
+                return true;
+            }
+        } else {
+            System.out.println("Invalid student ID format.");
+            return false;
+        }
+    }
+
+    /**
+     * Validation for Birthday it should have this pattern MM/DD/YYYY.
+     */
+    public static boolean isValidBirthday(String birthday) {
+        String[] parts = birthday.split("/");
+        if (parts.length != 3)
+            return false;
+
+        int month, day, year;
+        try {
+            month = Integer.parseInt(parts[0]);
+            day = Integer.parseInt(parts[1]);
+            year = Integer.parseInt(parts[2]);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        if (month < 1 || month > 12)
+            return false;
+
+        if (day < 1 || day > 31)
+            return false;
+
+        if (year < 1950 || year > 2100)
+            return false;
+
+        return true;
+    }
+
+    /**
+     * Validation for email it should have a @ and . input.
+     */
+    public static boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+
+    /**
+     * Validation for contact number it should be a number only.
+     */
+    public static boolean isValidContactNumber(String contactNumber) {
+        String contactNumberRegex = "^[0-9]+$";
+        Pattern pattern = Pattern.compile(contactNumberRegex);
+        Matcher matcher = pattern.matcher(contactNumber);
+        return matcher.matches();
     }
 }
