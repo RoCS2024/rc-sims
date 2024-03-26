@@ -1,6 +1,6 @@
 package com.student.information.management.data.student.dao.impl;
 
-import com.student.information.management.app.model.student.Student;
+import com.student.information.management.appl.model.student.Student;
 import com.student.information.management.data.connection.ConnectionHelper;
 import com.student.information.management.data.student.dao.StudentDao;
 import org.slf4j.Logger;
@@ -16,8 +16,9 @@ import java.util.List;
 
 import static com.student.information.management.data.utils.QueryConstant.*;
 /**
- * This is the Student Dao Impl.
- */
+ * An implementation class of the Student Data Access Object.
+ *
+ * */
 public class StudentDaoImpl implements StudentDao {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(StudentDaoImpl.class);
