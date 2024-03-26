@@ -217,7 +217,7 @@ public class Main {
 
         System.out.print("Enter Religion: ");
         String religion = sc.nextLine();
-        if (!religion.matches("[a-zA-Z]+")) {
+        if (!religion.matches("[a-zA-Z ]+")) {
             System.out.println("Invalid Religion. Please try again.");
             return;
         }
