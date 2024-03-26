@@ -1,2 +1,0 @@
-2024-03-25 23:56:46.510 [main] ERROR com.student.information.management.data.connection.ConnectionHelper - Error has occurred. Cannot connect to the database.ORA-12541: Cannot connect. No listener at host localhost port 1521. (CONNECTION_ID=NN7B+yK9TpaACPx9EPSqTA==)
-https://docs.oracle.com/error-help/db/ora-12541/
