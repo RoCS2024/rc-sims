@@ -72,23 +72,23 @@ public class Main {
         newStudent.setStudentId(studentId);
 
         System.out.print("Enter Last Name: ");
-        String lastName = sc.next();
-        if (!lastName.matches("[a-zA-zZ]+")) {
+        String lastName = sc.nextLine();
+        if (!lastName.matches("[a-zA-Z]+")) {
             System.out.println("Invalid Last Name. Please try again.");
             return;
         }
         newStudent.setLastName(lastName);
 
         System.out.print("Enter First Name: ");
-        String firstName = sc.next();
-        if (!firstName.matches("[a-zA-Z]+")) {
+        String firstName = sc.nextLine();
+        if (!firstName.matches("[a-zA-Z ]+")) {
             System.out.println("Invalid First Name. Please try again.");
             return;
         }
         newStudent.setFirstName(firstName);
 
         System.out.print("Enter Middle Name: ");
-        String middleName = sc.next();
+        String middleName = sc.nextLine();
         if (!middleName.matches("[a-zA-Z]+")) {
             System.out.println("Invalid Middle Name. Please try again.");
             return;
@@ -96,9 +96,7 @@ public class Main {
         newStudent.setMiddleName(middleName);
 
         System.out.print("Enter Sex (Male/Female): ");
-        sc.nextLine();
         String sex = sc.nextLine();
-
         if (!(sex.equalsIgnoreCase("Male") || sex.equalsIgnoreCase("Female"))) {
             System.out.println("Invalid sex. Please enter 'Male' or 'Female'.");
             return;
