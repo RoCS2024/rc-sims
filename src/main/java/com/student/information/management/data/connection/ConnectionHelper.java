@@ -1,7 +1,12 @@
 package com.student.information.management.data.connection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  * The ConnectionHelper class connects to an Oracle database.
  */
@@ -15,6 +20,8 @@ public class ConnectionHelper {
     /** The password used to connect to the database. */
     public static final String password = "Changeme0";
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionHelper.class);
+
     /**
      * This method gets the connection from an Oracle database instance.
      * */
@@ -22,8 +29,13 @@ public class ConnectionHelper {
         try {
             Class.forName(ORACLE_DRIVER).newInstance();
             return DriverManager.getConnection(URL, username, password);
-        } catch (Exception ex) {
-            throw new RuntimeException("Error connecting to the database", ex);
+        } catch (ClassNotFoundException ex) {
+            LOGGER.error("Error has occurred. Driver not found." + ex.getMessage());
+        } catch (InstantiationException | IllegalAccessException ex) {
+            LOGGER.error("Error has occurred. Cannot create a database instance." + ex.getMessage());
+        } catch (SQLException ex) {
+            LOGGER.error("Error has occurred. Cannot connect to the database." + ex.getMessage());
         }
+        return null;
     }
 }
