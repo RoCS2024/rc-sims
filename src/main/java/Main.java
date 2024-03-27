@@ -179,7 +179,7 @@ public class Main {
 
         System.out.print("Enter First Name: ");
         String firstName = sc.nextLine();
-        if (!firstName.matches("[a-zA-Z]+")) {
+        if (!firstName.matches("[a-zA-Z ]+")) {
             System.out.println("Invalid First Name. Please try again.");
             return;
         }
