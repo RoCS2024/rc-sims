@@ -88,6 +88,7 @@ public class Main {
         newStudent.setFirstName(firstName);
 
         System.out.print("Enter Middle Name: ");
+        sc.nextLine();
         String middleName = sc.next();
         if (!middleName.matches("[a-zA-Z]+")) {
             System.out.println("Invalid Middle Name. Please try again.");
