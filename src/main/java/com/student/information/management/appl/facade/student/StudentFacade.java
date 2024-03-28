@@ -1,5 +1,7 @@
 package com.student.information.management.appl.facade.student;
 
+import com.student.information.management.appl.exception.StudentExistException;
+import com.student.information.management.appl.exception.StudentNotFoundException;
 import com.student.information.management.appl.model.student.Student;
 
 import java.util.List;
@@ -29,7 +31,7 @@ public interface StudentFacade {
      * @param student student to add.
      * @return true if adding is successful.
      * */
-    boolean addStudent(Student student);
+    boolean addStudent(Student student) throws StudentExistException;
 
     /**
      * Updates a Student in the database.
@@ -37,5 +39,5 @@ public interface StudentFacade {
      * @param student  student to update.
      * @return true if update is successful.
      * */
-    boolean updateStudent(Student student);
+    boolean updateStudent(Student student) throws StudentNotFoundException;
 }

@@ -1,5 +1,7 @@
 package com.student.information.management.appl.facade.student.impl;
 
+import com.student.information.management.appl.exception.StudentExistException;
+import com.student.information.management.appl.exception.StudentNotFoundException;
 import com.student.information.management.appl.facade.student.StudentFacade;
 import com.student.information.management.appl.model.student.Student;
 import com.student.information.management.data.student.dao.StudentDao;
@@ -10,10 +12,10 @@ import java.util.List;
  * An implementation class of the Student Facade.
  */
 public class StudentFacadeImpl implements StudentFacade {
-    StudentDao studentDao = new StudentDaoImpl();
+      StudentDao studentDao = new StudentDaoImpl();
 
     @Override
-    public List<Student> getAllStudents() { return studentDao.getAllStudents(); }
+    public List<Student> getAllStudents() { return StudentDao.getAllStudents(); }
 
     @Override
     public Student getStudentById(String student_id) throws RuntimeException {
@@ -21,7 +23,7 @@ public class StudentFacadeImpl implements StudentFacade {
     }
 
     @Override
-    public boolean addStudent(Student student) {
+    public boolean addStudent(Student student) throws StudentExistException {
         boolean result = false;
         try {
             Student targetStudent = getStudentById(student.getStudentId());
@@ -30,13 +32,13 @@ public class StudentFacadeImpl implements StudentFacade {
             }
             result = studentDao.addStudent(student);
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new StudentExistException("Item to add already exists. ");
         }
         return result;
     }
 
     @Override
-    public boolean updateStudent(Student student) {
+    public boolean updateStudent(Student student) throws  StudentNotFoundException {
         boolean result = false;
         try {
             Student targetStudent = getStudentById(student.getStudentId());
@@ -45,7 +47,7 @@ public class StudentFacadeImpl implements StudentFacade {
             }
             result = studentDao.updateStudent(student);
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new StudentNotFoundException("Item to update not found. ");
         }
         return result;
     }

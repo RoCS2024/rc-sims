@@ -13,7 +13,7 @@ public interface StudentDao {
      *
      * @return list of all students.
      * */
-    List<Student> getAllStudents();
+    static List<Student> getAllStudents();
 
     /**
      * Retrieves a Student from the database with specified id.
