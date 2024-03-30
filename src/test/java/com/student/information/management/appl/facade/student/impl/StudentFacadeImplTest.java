@@ -66,9 +66,8 @@ class StudentFacadeImplTest {
         when(studentDao.getStudentById("1")).thenReturn(student);
         Student expectedStudent = studentFacade.getStudentById("1");
 
-        // Assert that expectedItem and item are equal
         assert(expectedStudent.equals(student));
-        // verify that when calling itemFacade.getItemById(), the itemDao.getItemById() is called.
+
         verify(studentDao).getStudentById("1");
     }
 
@@ -80,11 +79,9 @@ class StudentFacadeImplTest {
 
             boolean result = studentFacade.addStudent(addStudent);
 
-            // Assert that when adding an item, it returns true if successful
             assert(result == true);
-            // Assert that addItem is not in the database
+
             assert(studentFacade.getStudentById("2") == null);
-            // Verify that itemDao.addItem() is called when itemFacade.addItem() is invoked
             verify(studentDao).addStudent(addStudent);
         } catch (Exception e) {
             LOGGER.error("Exception caught: " + e.getMessage());
@@ -100,11 +97,10 @@ class StudentFacadeImplTest {
 
             boolean result = studentFacade.updateStudent(student);
 
-            // Assert that when updating an item, it returns true if successful
             assert(result == true);
-            // Assert that item to update is in the database
+
             assert(studentFacade.getStudentById("1").equals(student));
-            // Verify that itemDao.updateItem() is called when itemFacade.updateItem() is invoked
+
             verify(studentDao).updateStudent(student);
         } catch (Exception e) {
             LOGGER.error("Exception caught: " + e.getMessage());
