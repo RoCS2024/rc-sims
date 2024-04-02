@@ -6,12 +6,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
- * This is student model.
- */
+ * POJO class for Student objects.
+ * */
 public class Student {
-    /**
-     * This is fields.
-     */
     private String studentId;
     private String lastName;
     private String firstName;
@@ -109,9 +106,5 @@ public class Student {
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
-
-    /**
-     * Validation for student id should be have a pattern like CT00-0000.
-     */
 
 }
