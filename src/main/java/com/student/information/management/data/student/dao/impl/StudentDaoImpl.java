@@ -25,10 +25,10 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public List<Student> getAllStudents() {
         List<Student> students = new ArrayList<>();
-        try {Connection con = ConnectionHelper.getConnection();
+        Connection con = null;
+        try { con = ConnectionHelper.getConnection();
             PreparedStatement stmt = con.prepareStatement(GET_ALL_STUDENTS_STATEMENT);
             ResultSet rs = stmt.executeQuery();
-
 
             while(rs.next()) {
                 students.add(setStudent(rs));
@@ -37,13 +37,22 @@ public class StudentDaoImpl implements StudentDao {
 
         } catch (Exception e) {
             LOGGER.error("An SQL Exception occurred." + e.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    LOGGER.error("Error closing connection: " + e.getMessage());
+                }
+            }
         }
         LOGGER.debug("Student database is empty.");
         return students;
     }
     @Override
     public Student getStudentById(String id){
-        try {Connection con = ConnectionHelper.getConnection();
+        Connection con = null;
+        try { con = ConnectionHelper.getConnection();
             PreparedStatement stmt = con.prepareStatement(GET_STUDENT_BY_STUDENT_ID_STATEMENT);
             stmt.setString(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -54,13 +63,22 @@ public class StudentDaoImpl implements StudentDao {
         } catch (Exception e) {
             LOGGER.error("Error retrieving Student with ID " + id + ": " + e.getMessage());
             e.printStackTrace();
+        }  finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    LOGGER.error("Error closing connection: " + e.getMessage());
+                }
+            }
         }
         LOGGER.debug("Student not found.");
         return null;
     }
     @Override
     public boolean addStudent(Student student) {
-        try {Connection con = ConnectionHelper.getConnection();
+        Connection con = null;
+        try { con = ConnectionHelper.getConnection();
             PreparedStatement statement = con.prepareStatement(ADD_STUDENT_STATEMENT);
             statement.setString(1, student.getStudentId());
             statement.setString(2, student.getLastName());
@@ -79,8 +97,17 @@ public class StudentDaoImpl implements StudentDao {
             LOGGER.error("Error adding student failed " + e.getMessage());
             e.printStackTrace();
             return false;
+        }  finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    LOGGER.error("Error closing connection: " + e.getMessage());
+                }
+            }
         }
     }
+
     @Override
     public List<Student> addStudents(ResultSet rs) {
         return addStudents(rs);
@@ -107,8 +134,9 @@ public class StudentDaoImpl implements StudentDao {
     }
     @Override
     public boolean updateStudent(Student student) {
-        try {Connection connection = ConnectionHelper.getConnection();
-            PreparedStatement statement = connection.prepareStatement(UPDATE_STATEMENT);
+        Connection con = null;
+        try {con = ConnectionHelper.getConnection();
+            PreparedStatement statement = con.prepareStatement(UPDATE_STATEMENT);
             statement.setString(1, student.getLastName());
             statement.setString(2, student.getFirstName());
             statement.setString(3, student.getMiddleName());
@@ -126,6 +154,14 @@ public class StudentDaoImpl implements StudentDao {
             LOGGER.error("Error updating user with ID " + student.getStudentId() + ": " + e.getMessage());
             e.printStackTrace();
             return false;
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    LOGGER.error("Error closing connection: " + e.getMessage());
+                }
+            }
         }
     }
 }
