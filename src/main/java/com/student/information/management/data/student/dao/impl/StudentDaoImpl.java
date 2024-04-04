@@ -26,7 +26,8 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public List<Student> getAllStudents() {
         List<Student> students = new ArrayList<>();
-        try {Connection con = ConnectionHelper.getConnection();
+
+        try (Connection con = ConnectionHelper.getConnection()){
             PreparedStatement stmt = con.prepareStatement(GET_ALL_STUDENTS_STATEMENT);
             ResultSet rs = stmt.executeQuery();
 
@@ -52,7 +53,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public Student getStudentById(String id){
 
-        try { Connection con = ConnectionHelper.getConnection();
+        try (Connection con = ConnectionHelper.getConnection()) {
             PreparedStatement stmt = con.prepareStatement(GET_STUDENT_BY_STUDENT_ID_STATEMENT);
             stmt.setString(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -77,7 +78,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public boolean addStudent(Student student) {
 
-        try {Connection con = ConnectionHelper.getConnection();
+        try (Connection con = ConnectionHelper.getConnection()) {
             PreparedStatement statement = con.prepareStatement(ADD_STUDENT_STATEMENT);
             statement.setString(1, student.getStudentId());
             statement.setString(2, student.getLastName());
@@ -134,7 +135,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public boolean updateStudent(Student student) {
 
-        try {Connection con = ConnectionHelper.getConnection();
+        try (Connection con = ConnectionHelper.getConnection()) {
             PreparedStatement statement = con.prepareStatement(UPDATE_STATEMENT);
             statement.setString(1, student.getLastName());
             statement.setString(2, student.getFirstName());
