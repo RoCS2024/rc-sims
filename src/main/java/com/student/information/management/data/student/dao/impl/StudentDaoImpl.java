@@ -38,14 +38,6 @@ public class StudentDaoImpl implements StudentDao {
 
         } catch (Exception e) {
             LOGGER.error("An SQL Exception occurred." + e.getMessage());
-        } finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (Exception e) {
-                    LOGGER.error("Error closing connection: " + e.getMessage());
-                }
-            }
         }
         LOGGER.debug("Student database is empty.");
         return students;
@@ -63,14 +55,6 @@ public class StudentDaoImpl implements StudentDao {
         } catch (Exception e) {
             LOGGER.error("Error retrieving Student with ID " + id + ": " + e.getMessage());
             e.printStackTrace();
-        }  finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (Exception e) {
-                    LOGGER.error("Error closing connection: " + e.getMessage());
-                }
-            }
         }
         LOGGER.debug("Student not found.");
         return null;
@@ -97,14 +81,6 @@ public class StudentDaoImpl implements StudentDao {
             LOGGER.error("Error adding student failed " + e.getMessage());
             e.printStackTrace();
             return false;
-        }  finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (Exception e) {
-                    LOGGER.error("Error closing connection: " + e.getMessage());
-                }
-            }
         }
     }
 
@@ -154,14 +130,6 @@ public class StudentDaoImpl implements StudentDao {
             LOGGER.error("Error updating user with ID " + student.getStudentId() + ": " + e.getMessage());
             e.printStackTrace();
             return false;
-        } finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (Exception e) {
-                    LOGGER.error("Error closing connection: " + e.getMessage());
-                }
-            }
         }
     }
 }
