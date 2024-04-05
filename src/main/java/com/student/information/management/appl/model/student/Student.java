@@ -1,13 +1,10 @@
 package com.student.information.management.appl.model.student;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 /**
  * POJO class for Student objects.
- * */
+ */
 public class Student {
     private String studentId;
     private String lastName;
@@ -19,6 +16,7 @@ public class Student {
     private String email;
     private String address;
     private String contactNumber;
+
     /**
      * This is the Constructor for Student.
      */
@@ -27,124 +25,162 @@ public class Student {
     }
 
     /**
-     * This is the Getter for Student Id.
+     * This is Getter for Student Id.
+     * @return The Student Id.
      */
     public String getStudentId() {
         return studentId;
     }
+
     /**
-     * This is the Setter for Student Id.
+     * This is Setter for Student Id.
+     * @param studentId The Student Id to set.
      */
     public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
+
     /**
-     * This is the Getter for Last Name.
+     * This is Getter for Last Name.
+     * @return The Last Name.
      */
     public String getLastName() {
         return lastName;
     }
+
     /**
-     * This is the Setter for Last Name.
+     * This is Setter for Last Name.
+     * @param lastName The Last Name to set.
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     /**
-     * This is the Getter for First Name.
+     * This is Getter for First Name.
+     * @return The First Name.
      */
     public String getFirstName() {
         return firstName;
     }
+
     /**
-     * This is the Setter for First Name.
+     * This is Setter for First Name.
+     * @param firstName The First Name to set.
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     /**
-     * This is the Getter for Middle Name.
+     * This is Getter for Middle Name.
+     * @return The Middle Name.
      */
     public String getMiddleName() {
         return middleName;
     }
+
     /**
-     * This is the Setter for Middle Name.
+     * This is Setter for Middle Name.
+     * @param middleName The Middle Name to set.
      */
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
+
     /**
-     * This is the Getter for Sex.
+     * This is Getter for Sex.
+     * @return The Sex.
      */
     public String getSex() {
         return sex;
     }
+
     /**
-     * This is the Setter for Sex.
+     * This is Setter for Sex.
+     * @param sex The Sex to set.
      */
     public void setSex(String sex) {
         this.sex = sex;
     }
+
     /**
-     * This is the Getter for Birthday.
+     * This is Getter for Birthday.
+     * @return The Birthday.
      */
     public Timestamp getBirthday() {
         return birthday;
     }
+
     /**
-     * This is the Setter for Birthday.
+     * This is Setter for Birthday.
+     * @param birthday The Birthday to set.
      */
     public void setBirthday(Timestamp birthday) {
         this.birthday = birthday;
     }
+
     /**
-     * This is the Getter for Religion.
+     * This is Getter for Religion.
+     * @return The Religion.
      */
     public String getReligion() {
         return religion;
     }
+
     /**
-     * This is the Setter for Religion.
+     * This is Setter for Religion.
+     * @param religion The Religion to set.
      */
     public void setReligion(String religion) {
         this.religion = religion;
     }
+
     /**
-     * This is the Getter for Email.
+     * This is Getter for Email.
+     * @return The Email.
      */
     public String getEmail() {
         return email;
     }
+
     /**
-     * This is the Setter for Email.
+     * This is Setter for Email.
+     * @param email The Email to set.
      */
     public void setEmail(String email) {
         this.email = email;
     }
+
     /**
-     * This is the Getter for Address.
+     * This is Getter for Address.
+     * @return The Address.
      */
     public String getAddress() {
         return address;
     }
+
     /**
-     * This is the Setter for Address.
+     * This is Setter for Address.
+     * @param address The Address to set.
      */
     public void setAddress(String address) {
         this.address = address;
     }
+
     /**
-     * This is the Getter for Contact Number.
+     * This is Getter for Contact Number.
+     * @return The Contact Number.
      */
     public String getContactNumber() {
         return contactNumber;
     }
+
     /**
      * This is Setter for Contact Number.
+     * @param contactNumber The Contact Number to set.
      */
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
-
 }
