@@ -3,61 +3,71 @@ package com.student.information.management.appl.model.student;
 import java.sql.Timestamp;
 
 /**
- * POJO class for Student objects.
- */
+ * POJO class for Student objects. This class represents the student information.
+ * */
 public class Student {
+    /** A unique student id of the student. */
     private String studentId;
+    /** The last Name of the student. */
     private String lastName;
+    /** The first Name of the student. */
     private String firstName;
+    /** The middle Name of the student. */
     private String middleName;
+    /** The sex of the student. */
     private String sex;
+    /** It is the birthday of the student. */
     private Timestamp birthday;
+    /** The religion of the student. */
     private String religion;
+    /** A unique student email of the student. */
     private String email;
+    /** The complete address of the student. */
     private String address;
+    /** A unique contact number of the student. */
     private String contactNumber;
 
-    /**
-     * This is the Constructor for Student.
+    /***
+     * Default constructor of the Student class.
      */
     public Student() {
 
     }
 
     /**
-     * This is Getter for Student Id.
-     * @return The Student Id.
+     * This gets the Student Id.
+     * @return the student's Id.
      */
     public String getStudentId() {
         return studentId;
     }
 
     /**
-     * This is Setter for Student Id.
-     * @param studentId The Student Id to set.
+     * This sets the student id
+     * @param studentId is the ID to be set.
      */
     public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
     /**
-     * This is Getter for Last Name.
-     * @return The Last Name.
+     * This gets the Last Name.
+     * @return the Last Name.
      */
     public String getLastName() {
         return lastName;
     }
 
     /**
-     * This is Setter for Last Name.
-     * @param lastName The Last Name to set.
+     * This sets the Last Name.
+     * @param lastName is the Last Name to be set.
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     /**
-     * This is Getter for First Name.
+     * This gets the First Name.
      * @return The First Name.
      */
     public String getFirstName() {
@@ -65,15 +75,15 @@ public class Student {
     }
 
     /**
-     * This is Setter for First Name.
-     * @param firstName The First Name to set.
+     * This sets for First Name.
+     * @param firstName is the First Name to be set.
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     /**
-     * This is Getter for Middle Name.
+     * This gets for Middle Name.
      * @return The Middle Name.
      */
     public String getMiddleName() {
@@ -81,15 +91,15 @@ public class Student {
     }
 
     /**
-     * This is Setter for Middle Name.
-     * @param middleName The Middle Name to set.
+     * This sets for Middle Name.
+     * @param middleName is the Middle Name to be set.
      */
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
     /**
-     * This is Getter for Sex.
+     * This gets the Sex.
      * @return The Sex.
      */
     public String getSex() {
@@ -97,15 +107,15 @@ public class Student {
     }
 
     /**
-     * This is Setter for Sex.
-     * @param sex The Sex to set.
+     * This sets for Sex.
+     * @param sex is the Sex to be set.
      */
     public void setSex(String sex) {
         this.sex = sex;
     }
 
     /**
-     * This is Getter for Birthday.
+     * This gets the Birthday.
      * @return The Birthday.
      */
     public Timestamp getBirthday() {
@@ -113,15 +123,15 @@ public class Student {
     }
 
     /**
-     * This is Setter for Birthday.
-     * @param birthday The Birthday to set.
+     * This sets for Birthday.
+     * @param birthday is the Birthday to be set.
      */
     public void setBirthday(Timestamp birthday) {
         this.birthday = birthday;
     }
 
     /**
-     * This is Getter for Religion.
+     * This gets for Religion.
      * @return The Religion.
      */
     public String getReligion() {
@@ -129,15 +139,15 @@ public class Student {
     }
 
     /**
-     * This is Setter for Religion.
-     * @param religion The Religion to set.
+     * This sets for Religion.
+     * @param religion is the Religion to be set.
      */
     public void setReligion(String religion) {
         this.religion = religion;
     }
 
     /**
-     * This is Getter for Email.
+     * This gets for Email.
      * @return The Email.
      */
     public String getEmail() {
@@ -145,15 +155,15 @@ public class Student {
     }
 
     /**
-     * This is Setter for Email.
-     * @param email The Email to set.
+     * This sets for Email.
+     * @param email is the Email to be set.
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     * This is Getter for Address.
+     * This gets for Address.
      * @return The Address.
      */
     public String getAddress() {
@@ -161,15 +171,15 @@ public class Student {
     }
 
     /**
-     * This is Setter for Address.
-     * @param address The Address to set.
+     * This sets for Address.
+     * @param address is the Address to be set.
      */
     public void setAddress(String address) {
         this.address = address;
     }
 
     /**
-     * This is Getter for Contact Number.
+     * This gets for Contact Number.
      * @return The Contact Number.
      */
     public String getContactNumber() {
@@ -177,8 +187,8 @@ public class Student {
     }
 
     /**
-     * This is Setter for Contact Number.
-     * @param contactNumber The Contact Number to set.
+     * This gets for Contact Number.
+     * @param contactNumber is the Contact Number to be set.
      */
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
