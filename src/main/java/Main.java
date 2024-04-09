@@ -1,6 +1,8 @@
 import com.student.information.management.appl.facade.student.StudentFacade;
 import com.student.information.management.appl.facade.student.impl.StudentFacadeImpl;
 import com.student.information.management.appl.model.student.Student;
+import com.student.information.management.data.student.dao.StudentDao;
+import com.student.information.management.data.student.dao.impl.StudentDaoImpl;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -16,7 +18,9 @@ import java.util.regex.Pattern;
 public class Main {
     private static List<String> existingStudentIds = new ArrayList<>();
     public static void main(String[] args) {
-        StudentFacade studentFacade = new StudentFacadeImpl();
+        StudentDao studentDaoImpl = new StudentDaoImpl();
+
+        StudentFacade studentFacade = new StudentFacadeImpl(studentDaoImpl);
         Scanner sc = new Scanner(System.in);
 
         displayMenu();
