@@ -10,7 +10,11 @@ import java.util.List;
  * An implementation class of the Student Facade.
  */
 public class StudentFacadeImpl implements StudentFacade {
-    StudentDao studentDao = new StudentDaoImpl();
+    private final StudentDao studentDao;
+
+    public StudentFacadeImpl(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
 
     @Override
     public List<Student> getAllStudents() { return studentDao.getAllStudents(); }

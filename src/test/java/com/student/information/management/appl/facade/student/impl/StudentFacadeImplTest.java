@@ -26,7 +26,7 @@ class StudentFacadeImplTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentFacadeImplTest.class);
 
     @InjectMocks
-    private StudentFacade studentFacade = new StudentFacadeImpl();
+    private StudentFacadeImpl studentFacade;
 
     @Mock
     private StudentDao studentDao;
