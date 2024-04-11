@@ -111,6 +111,11 @@ public class Main {
         System.out.print("Enter Birthday (MM/DD/YYYY): ");
         String birthday = sc.nextLine();
 
+        if (!isValidBirthday(birthday)) {
+            System.out.println("Invalid birthday format. Please enter the date in MM/DD/YYYY format.");
+            return;
+        }
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         try {
             Date parsedDate = dateFormat.parse(birthday);
@@ -207,6 +212,11 @@ public class Main {
         System.out.print("Enter Birthday (MM/DD/YYYY): ");
         String birthday = sc.nextLine();
 
+        if (!isValidBirthday(birthday)) {
+            System.out.println("Invalid birthday format. Please enter the date in MM/DD/YYYY format.");
+            return;
+        }
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         try {
             Date parsedDate = dateFormat.parse(birthday);
@@ -232,6 +242,8 @@ public class Main {
             return;
         }
         studentToUpdate.setEmail(email);
+
+
 
         System.out.print("Enter Address: ");
         String address = sc.nextLine();
