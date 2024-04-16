@@ -18,9 +18,8 @@ import java.util.regex.Pattern;
 public class Main {
     private static List<String> existingStudentIds = new ArrayList<>();
     public static void main(String[] args) {
-        StudentDao studentDaoImpl = new StudentDaoImpl();
-
-        StudentFacade studentFacade = new StudentFacadeImpl(studentDaoImpl);
+        StudentInfoMgtApplication app = new StudentInfoMgtApplication();
+        StudentFacade studentFacade = app.getStudentFacade();
         Scanner sc = new Scanner(System.in);
 
         displayMenu();
