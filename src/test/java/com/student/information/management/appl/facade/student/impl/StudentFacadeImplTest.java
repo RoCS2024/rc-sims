@@ -15,8 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
@@ -106,4 +105,22 @@ class StudentFacadeImplTest {
             LOGGER.error("Exception caught: " + e.getMessage());
         }
     }
-}
+
+    @Test
+    public void testFindStudentByEmail() {
+        String email = "me@gmail.com";
+        Student expectedStudent = new Student();
+        expectedStudent.setEmail(email);
+
+        StudentDao studentDao = mock(StudentDao.class);
+        when(studentDao.findStudentByEmail(email)).thenReturn(expectedStudent);
+
+        StudentFacadeImpl studentFacade = new StudentFacadeImpl(studentDao);
+        Student result = studentFacade.findStudentByEmail(email);
+
+        assertNotNull(result, "Student email should not be null.");
+        assertEquals(expectedStudent, result, "Student email should match expected student.");
+        verify(studentDao, times(1)).findStudentByEmail(email);
+    }
+
+    }

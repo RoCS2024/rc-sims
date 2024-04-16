@@ -38,4 +38,6 @@ public interface StudentFacade {
      * @return true if update is successful.
      * */
     boolean updateStudent(Student student);
+
+    Student findStudentByEmail(String email);
 }

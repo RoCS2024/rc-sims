@@ -47,4 +47,5 @@ public interface StudentDao {
      * */
     boolean updateStudent(Student student) ;
 
+    Student findStudentByEmail(String email);
 }

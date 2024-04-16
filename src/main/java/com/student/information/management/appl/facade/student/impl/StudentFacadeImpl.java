@@ -53,4 +53,10 @@ public class StudentFacadeImpl implements StudentFacade {
         }
         return result;
     }
+
+    @Override
+    public Student findStudentByEmail(String email) {
+        return  studentDao.findStudentByEmail(email);
+    }
+
 }

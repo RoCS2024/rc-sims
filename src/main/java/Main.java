@@ -140,7 +140,13 @@ public class Main {
             System.out.println("Invalid email format. Please try again.");
             return;
         }
+
+        if (studentFacade.findStudentByEmail(email) != null) {
+            System.out.println("Email address is already in use. Please enter a different email address.");
+            return;
+        }
         newStudent.setEmail(email);
+
 
         System.out.print("Enter Address: ");
         String address = sc.nextLine();
@@ -240,7 +246,11 @@ public class Main {
         if (!isValidEmail(email)) {
             System.out.println("Invalid email format. Please try again.");
             return;
+        } if (!email.equals(studentToUpdate.getEmail()) && studentFacade.findStudentByEmail(email) != null) {
+            System.out.println("Email address is already in use. Please enter a different email address.");
+            return;
         }
+
         studentToUpdate.setEmail(email);
 
 
