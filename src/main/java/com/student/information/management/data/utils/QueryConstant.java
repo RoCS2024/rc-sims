@@ -25,7 +25,8 @@ public class QueryConstant {
     /**
      * Update the existing student record in the STUDENT table
      */
-    public static final String UPDATE_STATEMENT ="UPDATE student" +
+    public static final String UPDATE_STATEMENT = "UPDATE student" +
             " SET last_name = ?, first_name = ?,  middle_name = ?, sex = ?, birthday = ?, religion = ?, email = ?, address = ?, contact_number = ?"
             + "  WHERE student_id = ?";
+    public static final String FIND_STUDENT_BY_EMAIL_STATEMENT = "SELECT * FROM STUDENT WHERE email = ?";
 }

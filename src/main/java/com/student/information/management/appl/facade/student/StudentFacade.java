@@ -38,4 +38,12 @@ public interface StudentFacade {
      * @return true if update is successful.
      * */
     boolean updateStudent(Student student);
+
+    /**
+     * Finds a Student in the database.
+     *
+     * @param email email to find.
+     * @return true if finding email is successful.
+     * */
+    Student findStudentByEmail(String email);
 }

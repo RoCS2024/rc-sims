@@ -47,4 +47,11 @@ public interface StudentDao {
      * */
     boolean updateStudent(Student student) ;
 
+    /**
+     * Finds an email in the database.
+     *
+     * @param email email to find.
+     * @return true if finding email is successful.
+     * */
+    Student findStudentByEmail(String email);
 }

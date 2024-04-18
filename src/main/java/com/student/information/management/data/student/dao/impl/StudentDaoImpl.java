@@ -23,15 +23,16 @@ public class StudentDaoImpl implements StudentDao {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(StudentDaoImpl.class);
     Connection con = ConnectionHelper.getConnection();
+
     @Override
     public List<Student> getAllStudents() {
         List<Student> students = new ArrayList<>();
 
-        try (Connection con = ConnectionHelper.getConnection()){
+        try (Connection con = ConnectionHelper.getConnection()) {
             PreparedStatement stmt = con.prepareStatement(GET_ALL_STUDENTS_STATEMENT);
             ResultSet rs = stmt.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 students.add(setStudent(rs));
             }
             return students;
@@ -42,14 +43,15 @@ public class StudentDaoImpl implements StudentDao {
         LOGGER.debug("Student database is empty.");
         return students;
     }
+
     @Override
-    public Student getStudentById(String id){
+    public Student getStudentById(String id) {
 
         try (Connection con = ConnectionHelper.getConnection()) {
             PreparedStatement stmt = con.prepareStatement(GET_STUDENT_BY_STUDENT_ID_STATEMENT);
             stmt.setString(1, id);
             ResultSet rs = stmt.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 return setStudent(rs);
             }
         } catch (Exception e) {
@@ -59,6 +61,7 @@ public class StudentDaoImpl implements StudentDao {
         LOGGER.debug("Student not found.");
         return null;
     }
+
     @Override
     public boolean addStudent(Student student) {
 
@@ -75,7 +78,7 @@ public class StudentDaoImpl implements StudentDao {
             statement.setString(9, student.getAddress());
             statement.setString(10, student.getContactNumber());
             int result = statement.executeUpdate();
-            return result == 1? true: false;
+            return result == 1 ? true : false;
 
         } catch (Exception e) {
             LOGGER.error("Error adding student failed " + e.getMessage());
@@ -88,8 +91,9 @@ public class StudentDaoImpl implements StudentDao {
     public List<Student> addStudents(ResultSet rs) {
         return addStudents(rs);
     }
+
     public Student setStudent(ResultSet rs) {
-        try{
+        try {
             Student student = new Student();
             student.setStudentId(rs.getString("student_id"));
             student.setLastName(rs.getString("last_name"));
@@ -102,12 +106,13 @@ public class StudentDaoImpl implements StudentDao {
             student.setAddress(rs.getString("address"));
             student.setContactNumber(rs.getString("contact_number"));
             return student;
-        }catch(Exception e){
+        } catch (Exception e) {
             LOGGER.error("An SQL Exception occurred." + e.getMessage());
         }
         LOGGER.debug("set Student failed.");
         return setStudent(rs);
     }
+
     @Override
     public boolean updateStudent(Student student) {
 
@@ -132,4 +137,23 @@ public class StudentDaoImpl implements StudentDao {
             return false;
         }
     }
-}
+
+    @Override
+    public Student findStudentByEmail(String email) {
+        Student student = null;
+        try (Connection con = ConnectionHelper.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(FIND_STUDENT_BY_EMAIL_STATEMENT);
+            statement.setString(1, email);
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                student = setStudent(rs);
+            }
+        } catch (Exception e) {
+            LOGGER.error("Error finding student by email {}: {}", email, e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return student;
+    }
+
+    }

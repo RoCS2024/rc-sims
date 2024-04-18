@@ -80,4 +80,16 @@ class StudentDaoImplTest {
         assertEquals(expectedStudent.getLastName(), student.getLastName());
     }
 
+    @Test
+    public void testFindStudentByEmail() {
+        Student student1 = new Student();
+        student1.setEmail("me@gmail.com");
+
+        when(studentDao.findStudentByEmail("me@gmail.com")).thenReturn(student1);
+
+        Student expectedStudent = studentDao.findStudentByEmail("me@gmail.com");
+
+        assertEquals(expectedStudent, student1);
+        assertEquals(expectedStudent.getEmail(), student1.getEmail());
+    }
 }
