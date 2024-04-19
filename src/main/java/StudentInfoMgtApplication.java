@@ -4,7 +4,7 @@ import com.student.information.management.data.student.dao.StudentDao;
 import com.student.information.management.data.student.dao.impl.StudentDaoImpl;
 
 public class StudentInfoMgtApplication {
-    private final StudentFacade studentFacade;
+    private StudentFacade studentFacade;
 
     public StudentInfoMgtApplication() {
         StudentDao studentDaoImpl = new StudentDaoImpl();
