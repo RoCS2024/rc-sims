@@ -1,32 +1,32 @@
 package com.student.information.management.data.utils;
 
 /**
- * This is the query constant.
+ * Inside the QueryConstants class contains constants representing SQL queries for managing employee information.
  */
 public class QueryConstant {
-    private QueryConstant() {
-    }
-
     /**
-     * Retrieve all students from STUDENT table
+     * SQL query to retrieves all students from the database.
      */
     public static final String GET_ALL_STUDENTS_STATEMENT = "SELECT * FROM STUDENT";
 
     /**
-     * Retrieve a student by their student ID from the STUDENT table
+     * SQL query to retrieves an student by their Student Number from the database.
      */
     public static final String GET_STUDENT_BY_STUDENT_ID_STATEMENT = "SELECT * FROM STUDENT WHERE STUDENT_ID = ?";
 
     /**
-     * Insert a new student into the STUDENT table
+     * SQL query that adds a new student to the database.
      */
     public static final String ADD_STUDENT_STATEMENT = "INSERT INTO STUDENT VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     /**
-     * Update the existing student record in the STUDENT table
+     * SQL query to updates an existing student in the database.
      */
     public static final String UPDATE_STATEMENT = "UPDATE student" +
             " SET last_name = ?, first_name = ?,  middle_name = ?, sex = ?, birthday = ?, religion = ?, email = ?, address = ?, contact_number = ?"
             + "  WHERE student_id = ?";
+    /**
+     * SQL query to find an existing email of the student in the database.
+     */
     public static final String FIND_STUDENT_BY_EMAIL_STATEMENT = "SELECT * FROM STUDENT WHERE email = ?";
 }

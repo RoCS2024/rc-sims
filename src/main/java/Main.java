@@ -20,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
         StudentInfoMgtApplication app = new StudentInfoMgtApplication();
         StudentFacade studentFacade = app.getStudentFacade();
+
         Scanner sc = new Scanner(System.in);
 
         displayMenu();

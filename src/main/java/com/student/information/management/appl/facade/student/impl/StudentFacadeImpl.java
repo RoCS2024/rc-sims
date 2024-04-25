@@ -7,11 +7,16 @@ import com.student.information.management.data.student.dao.impl.StudentDaoImpl;
 
 import java.util.List;
 /**
- * An implementation class of the Student Facade.
+ * An implementation class of the StudentFacade.
  */
 public class StudentFacadeImpl implements StudentFacade {
-    private final StudentDao studentDao;
 
+    private StudentDao studentDao;
+
+    /**
+     * This creates a new StudentFacadeImpl
+     * @param studentDao this helps for managing student data.
+     */
     public StudentFacadeImpl(StudentDao studentDao) {
         this.studentDao = studentDao;
     }
