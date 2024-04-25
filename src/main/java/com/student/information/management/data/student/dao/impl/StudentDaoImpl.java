@@ -21,7 +21,7 @@ import static com.student.information.management.data.utils.QueryConstant.*;
  * */
 public class StudentDaoImpl implements StudentDao {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(StudentDaoImpl.class);
+    public static Logger LOGGER = LoggerFactory.getLogger(StudentDaoImpl.class);
     Connection con = ConnectionHelper.getConnection();
 
     @Override

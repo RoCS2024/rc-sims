@@ -12,15 +12,14 @@ import java.sql.SQLException;
  */
 public class ConnectionHelper {
     /** The connection URL. */
-    public static final String URL = "jdbc:oracle:thin:@localhost:1521:oracleDB";
+    public static String URL = "jdbc:oracle:thin:@localhost:1521:baemonville";
     /** The Oracle driver. */
-    public static final String ORACLE_DRIVER = "oracle.jdbc.driver.OracleDriver";
+    public static String ORACLE_DRIVER = "oracle.jdbc.driver.OracleDriver";
     /** The username used to connect to the database. */
-    public static final String username = "system";
+    public static String username = "system";
     /** The password used to connect to the database. */
-    public static final String password = "Changeme0";
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionHelper.class);
+    public static String password = "J03J16R11L27";
+    private static Logger LOGGER = LoggerFactory.getLogger(ConnectionHelper.class);
 
     /**
      * This method gets the connection from an Oracle database instance.
