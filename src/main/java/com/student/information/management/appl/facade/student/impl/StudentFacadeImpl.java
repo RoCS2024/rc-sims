@@ -10,7 +10,6 @@ import java.util.List;
  * An implementation class of the StudentFacade.
  */
 public class StudentFacadeImpl implements StudentFacade {
-
     private StudentDao studentDao;
 
     /**
@@ -25,7 +24,7 @@ public class StudentFacadeImpl implements StudentFacade {
     public List<Student> getAllStudents() { return studentDao.getAllStudents(); }
 
     @Override
-    public Student getStudentById(String student_id) throws RuntimeException {
+    public Student getStudentById(String student_id) {
         return studentDao.getStudentById(student_id);
     }
 
