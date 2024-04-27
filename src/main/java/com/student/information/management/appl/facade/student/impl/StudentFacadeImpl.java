@@ -7,11 +7,15 @@ import com.student.information.management.data.student.dao.impl.StudentDaoImpl;
 
 import java.util.List;
 /**
- * An implementation class of the Student Facade.
+ * An implementation class of the StudentFacade.
  */
 public class StudentFacadeImpl implements StudentFacade {
-    private final StudentDao studentDao;
+    private StudentDao studentDao;
 
+    /**
+     * This creates a new StudentFacadeImpl
+     * @param studentDao this helps for managing student data.
+     */
     public StudentFacadeImpl(StudentDao studentDao) {
         this.studentDao = studentDao;
     }
@@ -20,7 +24,7 @@ public class StudentFacadeImpl implements StudentFacade {
     public List<Student> getAllStudents() { return studentDao.getAllStudents(); }
 
     @Override
-    public Student getStudentById(String student_id) throws RuntimeException {
+    public Student getStudentById(String student_id) {
         return studentDao.getStudentById(student_id);
     }
 

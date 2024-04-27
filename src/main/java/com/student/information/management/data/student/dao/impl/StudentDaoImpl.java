@@ -21,8 +21,7 @@ import static com.student.information.management.data.utils.QueryConstant.*;
  * */
 public class StudentDaoImpl implements StudentDao {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(StudentDaoImpl.class);
-    Connection con = ConnectionHelper.getConnection();
+    public static Logger LOGGER = LoggerFactory.getLogger(StudentDaoImpl.class);
 
     @Override
     public List<Student> getAllStudents() {
@@ -92,7 +91,7 @@ public class StudentDaoImpl implements StudentDao {
         return addStudents(rs);
     }
 
-    public Student setStudent(ResultSet rs) {
+    private Student setStudent(ResultSet rs) {
         try {
             Student student = new Student();
             student.setStudentId(rs.getString("student_id"));
