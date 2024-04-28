@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 public class Main {
     private static List<String> existingStudentIds = new ArrayList<>();
     public static void main(String[] args) {
-        com.student.information.management.StudentInfoMgtApplication app = new com.student.information.management.StudentInfoMgtApplication();
+        StudentInfoMgtApplication app = new StudentInfoMgtApplication();
         StudentFacade studentFacade = app.getStudentFacade();
 
         Scanner sc = new Scanner(System.in);

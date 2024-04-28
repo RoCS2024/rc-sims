@@ -5,7 +5,7 @@ import com.student.information.management.appl.facade.student.impl.StudentFacade
 import com.student.information.management.data.student.dao.StudentDao;
 import com.student.information.management.data.student.dao.impl.StudentDaoImpl;
 /**
- * This class is com.student.information.management.StudentInfoMgtApplication. This class represents the student information for website.
+ * This class is StudentInfoMgtApplication. This class represents the student information for website.
  * */
 public class StudentInfoMgtApplication {
     private StudentFacade studentFacade;
